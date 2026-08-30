@@ -1,25 +1,45 @@
-# CODING AGENTS: READ THIS FIRST
+# Dandiya Event Registration Web App
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+Booking site for **Dhinchak Dandiya 2026** — 17 & 18 October 2026, Plutone Mall
+6th Floor, Rourkela. Presented by Rourkela Junction Events, a brand operated by
+Junction India Enterprises.
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+## Repository layout
 
-## What you should do — IMPORTANT
+| Path | What it is |
+|---|---|
+| **`web/`** | **The actual website.** Next.js app — start here. See [`web/README.md`](web/README.md) for setup, environment variables and deployment. |
+| `project/` | Source design files exported from Claude Design (HTML/CSS/JS prototypes, assets, logos). Reference material, not shipped. |
+| `chats/` | Transcript of the design conversation — the reasoning behind each decision. |
+| `project/HANDOFF.md` | The original handoff brief that came with the design export. |
 
-**Read the chat transcripts first.** There are 1 chat transcript(s) in `chats/`. The transcripts show the full back-and-forth between the user and the design assistant — they tell you **what the user actually wants** and **where they landed** after iterating. Don't skip them. The final HTML files are the output, but the chat is where the intent lives.
+## Quick start
 
-**Read `project/Dandiya Booking App.dc.html` in full.** The user had this file open when they triggered the handoff, so it's almost certainly the primary design they want built. Read it top to bottom — don't skim. Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+```bash
+cd web
+npm install
+cp .env.example .env.local   # fill in — the comments explain each value
+npm run dev
+```
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+It runs with no configuration at all, using an in-process store, so you can
+click through the whole flow immediately. Production needs the environment
+variables set — see `web/README.md`.
 
-## About the design files
+## How booking works
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+Nothing is charged online. A customer reserves passes, the team calls them, and
+payment is collected on that call — the flow settled on during design.
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+Reservations get sequential, collision-free booking numbers and are mirrored
+live into a Google Sheet for the team working the phones. Details, including
+the concurrency and failure-handling behaviour, are in
+[`web/README.md`](web/README.md).
 
-## Bundle contents
+## Before launch
 
-- `README.md` — this file
-- `chats/` — conversation transcripts (read these!)
-- `project/` — the `Dandiya Event Booking App` project files (HTML prototypes, assets, components)
+- The legal copy in the policy pages was drafted during design, **not by a
+  lawyer**. Get it reviewed.
+- "Pay Now" is intentionally inactive, shown as a locked "coming soon" tile.
+- The hero video is a 14 MB MP4 that starts automatically — see the bandwidth
+  note in `web/README.md` before going live on a free hosting tier.
