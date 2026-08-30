@@ -1,0 +1,404 @@
+.screen {
+  background: radial-gradient(110% 60% at 20% 0%, #4a0d50 0%, #1e0621 60%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  background: rgba(30, 6, 33, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 201, 60, 0.28);
+  position: sticky;
+  top: 0;
+  z-index: 6;
+}
+
+.topbarInner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.back {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 201, 60, 0.4);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--gold);
+}
+
+.topbarTitle {
+  font-family: var(--font-yatra), cursive;
+  font-size: 18px;
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.topbarSub {
+  font-size: 11.5px;
+  color: var(--ink-60);
+}
+
+.body {
+  flex: 1;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 18px 0;
+}
+
+.step {
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 12px;
+}
+
+/* Night steppers -------------------------------------------------------- */
+.nights {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.nightCard {
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--card);
+  border: 1px solid rgba(255, 201, 60, 0.2);
+  transition: background 150ms ease, border-color 150ms ease;
+}
+
+/* A card lights up once it holds passes. */
+.nightCardActive {
+  background: linear-gradient(
+    140deg,
+    rgba(255, 201, 60, 0.18),
+    rgba(216, 27, 122, 0.14)
+  );
+  border-color: rgba(255, 201, 60, 0.6);
+}
+
+.nightRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.nightMeta {
+  flex: 1;
+  min-width: 140px;
+}
+
+.nightName {
+  font-family: var(--font-yatra), cursive;
+  font-size: 21px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.nightDate {
+  font-size: 12.5px;
+  color: var(--ink-60);
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: none;
+}
+
+/* 46px keeps the tap target comfortable for a non-technical audience. */
+.stepBtn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex: none;
+  border: 1px solid rgba(255, 201, 60, 0.45);
+  background: transparent;
+  color: var(--gold);
+}
+
+.stepBtnPrimary {
+  border: none;
+  background: linear-gradient(140deg, #ffc93c, #ff8f2c);
+  color: var(--plum);
+}
+
+.stepBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.qty {
+  font-weight: 900;
+  font-size: 23px;
+  min-width: 26px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.hint {
+  font-size: 12.5px;
+  color: var(--ink-50);
+  margin-bottom: 28px;
+}
+
+.qtyError {
+  background: var(--magenta);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 11px 14px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+/* Details --------------------------------------------------------------- */
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 7px;
+  color: rgba(255, 246, 228, 0.7);
+}
+
+.optional {
+  color: var(--ink-40);
+  font-weight: 500;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--ink);
+  background: rgba(255, 246, 228, 0.07);
+  border-radius: 14px;
+  outline: none;
+  border: 1px solid var(--line-strong);
+}
+
+.input::placeholder {
+  color: var(--ink-40);
+}
+
+.inputError {
+  border-color: var(--coral);
+}
+
+.emailField {
+  margin-bottom: 28px;
+}
+
+.emailNote {
+  font-size: 12px;
+  color: var(--ink-50);
+  margin-top: 7px;
+}
+
+/* Terms ----------------------------------------------------------------- */
+.terms {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  cursor: pointer;
+  padding: 16px;
+  border-radius: 18px;
+  margin-bottom: 12px;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.termsChecked {
+  background: rgba(255, 201, 60, 0.1);
+  border-color: rgba(255, 201, 60, 0.5);
+}
+
+.termsError {
+  border-color: var(--coral);
+}
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  background: transparent;
+  border: 1px solid rgba(255, 201, 60, 0.5);
+}
+
+.checkboxOn {
+  background: linear-gradient(140deg, #ffc93c, #ff8f2c);
+  border-color: transparent;
+}
+
+.termsCopy {
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(255, 246, 228, 0.82);
+}
+
+.termsCopy strong {
+  color: var(--gold);
+}
+
+.termsError_msg {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--coral);
+  font-weight: 600;
+  margin: -4px 0 22px 2px;
+}
+
+/* Summary --------------------------------------------------------------- */
+.summary {
+  background: rgba(255, 201, 60, 0.08);
+  border: 1px solid var(--line-strong);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 22px;
+}
+
+.summaryChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 201, 60, 0.16);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 11.5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 9px;
+}
+
+.summaryRowLabel {
+  color: rgba(255, 246, 228, 0.72);
+}
+
+.summaryRule {
+  height: 1px;
+  background: rgba(255, 201, 60, 0.25);
+  margin: 11px 0;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.summaryTotalLabel {
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(255, 246, 228, 0.8);
+}
+
+.summaryTotalValue {
+  font-weight: 900;
+  font-size: 27px;
+  color: var(--gold);
+}
+
+/* Submit ---------------------------------------------------------------- */
+.submitBar {
+  position: sticky;
+  bottom: 0;
+  background: rgba(30, 6, 33, 0.94);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--line-strong);
+  z-index: 6;
+}
+
+.submitInner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 12px 18px;
+}
+
+.submitCta {
+  padding: 16px 22px;
+  font-size: 16px;
+  box-shadow: none;
+}
+
+.payNow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  border: 1px dashed rgba(255, 201, 60, 0.35);
+  color: var(--ink-40);
+  border-radius: 999px;
+  padding: 13px 22px;
+  font-weight: 700;
+  font-size: 14.5px;
+  margin-top: 9px;
+  cursor: not-allowed;
+  background: transparent;
+  font-family: inherit;
+}
+
+.submitNote {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-60);
+  margin-top: 9px;
+}
+
+.submitError {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  font-size: 13px;
+  color: var(--coral);
+  font-weight: 600;
+  margin-top: 10px;
+}

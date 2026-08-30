@@ -1,0 +1,16 @@
+# Only needed if you deploy to Netlify. On Vercel this file is ignored and
+# no configuration is required at all.
+#
+# The Next.js runtime plugin is what makes the API routes and the
+# server-rendered confirmation page work on Netlify; without it you get a
+# static export that cannot take bookings.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "22"
