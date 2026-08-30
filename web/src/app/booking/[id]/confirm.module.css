@@ -1,0 +1,273 @@
+.screen {
+  min-height: 100vh;
+}
+
+.hero {
+  position: relative;
+  background: radial-gradient(110% 90% at 50% 0%, #5c1060 0%, #1e0621 70%);
+  overflow: hidden;
+}
+
+.heroGlow {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  left: 50%;
+  margin-left: -180px;
+  top: -160px;
+  background: radial-gradient(circle, #ffc93c 0%, transparent 65%);
+  opacity: 0.35;
+  animation: glow 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.heroInner {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 46px 20px 34px;
+  position: relative;
+  container-type: inline-size;
+}
+
+.tick {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(140deg, #ffc93c, #ff8f2c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 12px 30px rgba(255, 143, 44, 0.35);
+}
+
+.title {
+  font-size: clamp(28px, 9cqw, 46px);
+  line-height: 1.05;
+  margin: 0 0 10px;
+  color: var(--gold);
+  overflow-wrap: break-word;
+}
+
+.lede {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 246, 228, 0.8);
+}
+
+.lede strong {
+  color: var(--ink);
+}
+
+/* Booking ID band ------------------------------------------------------- */
+.idBand {
+  background: linear-gradient(90deg, #ffc93c, #ff8f2c);
+  color: var(--plum);
+}
+
+.idBandInner {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  align-items: baseline;
+}
+
+.idLabel {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.idValue {
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: 0.03em;
+}
+
+/* Body ------------------------------------------------------------------ */
+.body {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 26px 20px 44px;
+}
+
+.detailCard {
+  background: var(--card);
+  border: 1px solid rgba(255, 201, 60, 0.25);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.rowLabel {
+  color: var(--ink-60);
+}
+
+.rowValue {
+  font-weight: 700;
+  text-align: right;
+}
+
+.rule {
+  height: 1px;
+  background: rgba(255, 201, 60, 0.25);
+}
+
+.dueRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.dueLabel {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.dueValue {
+  font-weight: 900;
+  font-size: 25px;
+  color: var(--gold);
+}
+
+.pendingChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(216, 27, 122, 0.18);
+  border: 1px solid rgba(216, 27, 122, 0.45);
+  color: var(--coral);
+  font-weight: 700;
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.screenshotCard {
+  background: rgba(216, 27, 122, 0.14);
+  border: 1px solid rgba(216, 27, 122, 0.45);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+
+.screenshotTitle {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: var(--coral);
+}
+
+.screenshotBody {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: rgba(255, 246, 228, 0.8);
+}
+
+.screenshotBody strong {
+  color: var(--gold);
+}
+
+.stepsCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.stepsTitle {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: var(--gold);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--ink-70);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+}
+
+.steps li::before {
+  content: counter(step) " · ";
+}
+
+.stepsCaveat {
+  color: var(--ink-50);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin-top: 9px;
+}
+
+.whatsapp {
+  margin-bottom: 16px;
+}
+
+.tail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13.5px;
+  font-weight: 700;
+  align-items: center;
+}
+
+.tail a {
+  text-decoration: none;
+}
+
+.tailMuted {
+  color: var(--ink-60);
+  text-decoration: none;
+}
+
+/* Not-found state ------------------------------------------------------- */
+.missing {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.missingTitle {
+  font-size: 30px;
+  color: var(--gold);
+  margin: 0 0 12px;
+}
+
+.missingBody {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-70);
+  margin: 0 0 24px;
+}
