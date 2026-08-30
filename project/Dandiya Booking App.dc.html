@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap">
+<style>body{margin:0;background:#150419;font-family:'Outfit',system-ui,sans-serif}*{box-sizing:border-box}</style>
+</helmet>
+<div style="min-height:100vh;background:#150419;font-family:'Outfit',system-ui,sans-serif;color:#fff6e4">
+
+  <div style="border-bottom:1px solid rgba(255,201,60,0.25);background:#1e0621;position:sticky;top:0;z-index:20">
+    <div style="max-width:1180px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px">
+      <div style="flex:1;min-width:0;font-weight:700;font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c">Dhinchak Dandiya — booking experience</div>
+      <div style="display:flex;border:1px solid rgba(255,201,60,0.4);border-radius:999px;overflow:hidden;flex:none">
+        <div onClick="{{ showDesktop }}" style="{{ desktopTabStyle }}">Web</div>
+        <div onClick="{{ showMobile }}" style="{{ mobileTabStyle }}">Mobile</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+  <div style="padding:24px 20px 40px">
+    <div style="max-width:1180px;margin:0 auto;border:1px solid rgba(255,201,60,0.3);background:#1e0621">
+      <dc-import name="Dandiya Site" hint-size="100%,1200px"></dc-import>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:32px 20px 48px;display:flex;justify-content:center">
+    <x-import component-from-global-scope="IOSDevice" from="./ios-frame.jsx" hint-size="402px,874px" dark="{{ true }}">
+      <div style="height:874px;overflow:auto;background:#1e0621">
+        <dc-import name="Dandiya Site" top-pad="{{ 54 }}" compact="{{ true }}" hint-size="100%,874px"></dc-import>
+      </div>
+    </x-import>
+  </div>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  state = { view: 'desktop' };
+
+  tabStyle(active) {
+    return {
+      padding: '8px 20px', cursor: 'pointer', fontFamily: 'Outfit, system-ui, sans-serif',
+      fontWeight: 800, fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase',
+      background: active ? 'linear-gradient(100deg,#ffc93c,#ff8f2c)' : 'transparent',
+      color: active ? '#2b0a30' : '#ffc93c',
+    };
+  }
+
+  renderVals() {
+    const v = this.state.view;
+    return {
+      isDesktop: v === 'desktop',
+      isMobile: v === 'mobile',
+      desktopTabStyle: this.tabStyle(v === 'desktop'),
+      mobileTabStyle: this.tabStyle(v === 'mobile'),
+      showDesktop: () => this.setState({ view: 'desktop' }),
+      showMobile: () => this.setState({ view: 'mobile' }),
+    };
+  }
+}
+</script>
+</body>
+</html>
