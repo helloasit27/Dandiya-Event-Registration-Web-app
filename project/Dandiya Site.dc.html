@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yatra+One&family=Outfit:wght@300;400;500;600;700;800;900&display=swap">
+<script src="./image-slot.js"></script>
+<style>
+*{box-sizing:border-box}
+a{color:#ffc93c}a:hover{color:#fff6e4}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes glow{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.7;transform:scale(1.08)}}
+@keyframes sway{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(6px) rotate(2deg)}}
+</style>
+</helmet>
+<div style="min-height:100%;background:#1e0621;color:#fff6e4;font-family:'Outfit',system-ui,sans-serif;padding-top:{{ topPad }}px;overflow-x:clip">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div>
+  <div style="background:rgba(30,6,33,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,201,60,0.28);position:sticky;top:0;z-index:6">
+    <div style="max-width:1120px;margin:0 auto;padding:8px 16px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px">
+      <img src="assets/junction-logo.png" alt="Rourkela Junction Events" style="height:42px;width:auto;object-fit:contain;flex:none" />
+      <div style="flex:1 1 120px;min-width:0">
+        <div style="font-family:'Yatra One',cursive;font-weight:400;font-size:12.5px;line-height:1.35;color:#fff6e4">Event organised by<span style="{{ brandBreakStyle }}"> </span>Rourkela Junction Events</div>
+        <div style="font-size:10.5px;color:rgba(255,246,228,0.55);margin-top:1px">a brand of Junction India Enterprises</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;flex:none;margin-left:auto">
+      <a href="https://www.instagram.com/rourkela_junction/" aria-label="Follow @rourkela_junction on Instagram" style="{{ igIconStyle }}">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+      </a>
+      <a href="tel:9348087289" aria-label="Need help? Call 9348087289" style="{{ callPillStyle }}">
+        <span style="{{ callIconWrapStyle }}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <span style="{{ callLabelStyle }}">
+          <span style="display:block;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,246,228,0.6);font-weight:700;white-space:nowrap">Need help? Contact us</span>
+          <span style="display:block;font-weight:800;font-size:14.5px;color:#ffc93c;white-space:nowrap">9348087289</span>
+        </span>
+      </a>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:relative;background:radial-gradient(120% 90% at 15% 0%, #5c1060 0%, #2c0a33 45%, #1e0621 100%);overflow:hidden;container-type:inline-size;container-name:hero">
+
+    <div style="position:absolute;width:420px;height:420px;left:-140px;top:-120px;background:radial-gradient(circle,#d81b7a 0%,transparent 65%);animation:glow 7s ease-in-out infinite;pointer-events:none"></div>
+    <div style="position:absolute;width:360px;height:360px;right:-120px;bottom:-140px;background:radial-gradient(circle,#ffc93c 0%,transparent 65%);opacity:.3;animation:glow 9s ease-in-out infinite;pointer-events:none"></div>
+    <div style="max-width:1120px;margin:0 auto;padding:32px 20px 40px;position:relative">
+      <div style="padding:28px;border-radius:28px;background:rgba(255,246,228,0.08);border:1px solid rgba(255,246,228,0.18);backdrop-filter:blur(18px) saturate(1.2);box-shadow:0 24px 60px rgba(0,0,0,0.45),inset 0 1px 0 rgba(255,255,255,0.18);container-type:inline-size">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,#d81b7a,#ff6b3d);color:#fff;font-weight:700;font-size:11.5px;letter-spacing:0.16em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:20px">Navratri 2026 · 2 Nights</div>
+        <div style="font-family:'Outfit';font-weight:600;font-size:13px;letter-spacing:0.3em;text-transform:uppercase;color:#ffc93c;opacity:.85;margin-bottom:6px">Presents</div>
+        <h1 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(38px,15cqw,88px);line-height:0.98;margin:0 0 6px;background:linear-gradient(180deg,#fff6e4 0%,#ffc93c 55%,#e0a419 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;overflow-wrap:break-word">Dhinchak<br />Dandiya 2026</h1>
+        <div style="font-family:'Outfit';font-weight:700;font-size:clamp(12px,3.4cqw,17px);letter-spacing:0.22em;text-transform:uppercase;color:#ff8f5c;margin-bottom:22px">Legacy like no others</div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px">
+          <div style="display:flex;align-items:center;gap:9px;background:rgba(255,246,228,0.1);border:1px solid rgba(255,201,60,0.35);padding:11px 18px;border-radius:999px;font-size:16.5px;font-weight:700">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            17 &amp; 18 Oct
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;background:rgba(255,246,228,0.1);border:1px solid rgba(255,201,60,0.35);padding:11px 18px;border-radius:999px;font-size:16.5px;font-weight:700">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            6–10 PM
+          </div>
+          <div style="display:flex;align-items:center;gap:9px;background:rgba(255,246,228,0.1);border:1px solid rgba(255,201,60,0.35);padding:11px 18px;border-radius:999px;font-size:16.5px;font-weight:700">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            Plutone Mall, 6th Floor
+          </div>
+        </div>
+
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:26px">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:88px;height:88px;border-radius:26px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;padding:11px;box-shadow:0 10px 26px rgba(0,0,0,0.4)">
+              <img src="assets/plutone-logo.png" alt="Plutone Mall" style="width:100%;height:100%;object-fit:contain" />
+            </div>
+            <div>
+              <div style="font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700">Venue partner</div>
+              <div style="font-weight:700;font-size:15px">Plutone Mall</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div style="width:88px;height:88px;border-radius:26px;background:#fff;display:flex;align-items:center;justify-content:center;flex:none;overflow:hidden;box-shadow:0 10px 26px rgba(0,0,0,0.4)">
+              <img src="assets/raurkela-shines-logo.png" alt="Raurkela Shines" style="width:100%;height:100%;object-fit:cover" />
+            </div>
+            <div>
+              <div style="font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700">Media partner</div>
+              <div style="font-weight:700;font-size:15px">Raurkela Shines</div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" onClick="{{ goBooking }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:420px;background:linear-gradient(100deg,#ffc93c,#ff8f2c);color:#2b0a30;border:none;border-radius:999px;padding:17px 24px;font-family:'Outfit';font-weight:800;font-size:16.5px;cursor:pointer;box-shadow:0 14px 34px rgba(255,143,44,0.35)">
+          <span style="display:block;text-align:left;line-height:1.25">Reserve Pass Now · ₹{{ price }}<span style="display:block;font-weight:600;font-size:12px;opacity:.75">Food included · T&amp;C apply</span></span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </button>
+        <div style="font-size:12.5px;opacity:.6;margin-top:10px">Reserve free — pay when our team calls you</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(90deg,#d81b7a,#ff6b3d,#ffc93c);padding:11px 0;overflow:hidden">
+    <div style="display:flex;width:max-content;animation:tick 26s linear infinite">
+      <div style="display:flex;gap:26px;padding-right:26px;font-weight:800;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#2b0a30;white-space:nowrap">
+        <span>Live DJ</span><span>✦</span><span>Live Dhol</span><span>✦</span><span>Gift Hampers</span><span>✦</span><span>Mascots</span><span>✦</span><span>Food Stalls</span><span>✦</span><span>Photobooth</span><span>✦</span><span>VIP Lounge</span><span>✦</span>
+      </div>
+      <div style="display:flex;gap:26px;padding-right:26px;font-weight:800;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#2b0a30;white-space:nowrap">
+        <span>Live DJ</span><span>✦</span><span>Live Dhol</span><span>✦</span><span>Gift Hampers</span><span>✦</span><span>Mascots</span><span>✦</span><span>Food Stalls</span><span>✦</span><span>Photobooth</span><span>✦</span><span>VIP Lounge</span><span>✦</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="background:linear-gradient(180deg,#250829,#1e0621);border-bottom:1px solid rgba(255,201,60,0.18)">
+    <div style="max-width:1120px;margin:0 auto;padding:40px 20px">
+      <div style="font-weight:700;font-size:11.5px;letter-spacing:0.28em;text-transform:uppercase;color:#ff8f5c;margin-bottom:10px">Watch</div>
+      <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 20px;color:#ffc93c">Last year in 60 seconds</h2>
+      <div style="max-width:820px;margin:0 auto;border-radius:24px;overflow:hidden;border:1px solid rgba(255,201,60,0.45);box-shadow:0 24px 60px rgba(0,0,0,0.5);background:#120416;align-self:center">
+        <div style="position:relative;padding-bottom:56.25%">
+          <sc-if value="{{ videoOn }}" hint-placeholder-val="{{ false }}">
+            <video src="assets/hero-highlights.mp4" autoplay="autoplay" muted="muted" loop="loop" controls="controls" playsinline="playsinline" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></video>
+          </sc-if>
+          <sc-if value="{{ videoIdle }}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:radial-gradient(120% 100% at 50% 0%, #5c1060 0%, #1e0621 75%)">
+              <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(140deg,#ffc93c,#ff8f2c);display:flex;align-items:center;justify-content:center;animation:glow 2.4s ease-in-out infinite">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#2b0a30" stroke="none"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+              <div style="font-weight:700;font-size:12.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,246,228,0.65)">2025 highlights</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1120px;margin:0 auto;padding:44px 20px 0">
+    <div style="font-weight:700;font-size:11.5px;letter-spacing:0.28em;text-transform:uppercase;color:#ff8f5c;margin-bottom:10px">The night</div>
+    <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 14px;color:#ffc93c">Two evenings of non-stop garba</h2>
+    <p style="font-size:15.5px;line-height:1.7;max-width:60ch;margin:0 0 30px;color:rgba(255,246,228,0.78)">A live dhol squad, a DJ playing back-to-back Navratri hits, mascots roaming the floor, limited gift hampers to win, and food and shopping stalls all around. Come dressed traditional, bring your crew, and dance till the lights come up.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px;margin-bottom:16px">
+      <div style="background:linear-gradient(160deg,rgba(216,27,122,0.22),rgba(255,246,228,0.04));border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <div style="font-weight:800;font-size:15.5px;margin-bottom:2px">Live DJ</div>
+        <div style="font-size:12.5px;color:rgba(255,246,228,0.6)">Non-stop garba sets</div>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(216,27,122,0.22),rgba(255,246,228,0.04));border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><circle cx="12" cy="12" r="9"/><path d="M8 10v4M12 8v8M16 10v4"/></svg>
+        <div style="font-weight:800;font-size:15.5px;margin-bottom:2px">Live Dhol</div>
+        <div style="font-size:12.5px;color:rgba(255,246,228,0.6)">Dhol squad both nights</div>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(216,27,122,0.22),rgba(255,246,228,0.04));border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v9h14v-9"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+        <div style="font-weight:800;font-size:15.5px;margin-bottom:2px">Gift Hampers</div>
+        <div style="font-size:12.5px;color:rgba(255,246,228,0.6)">Limited hampers to win</div>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(216,27,122,0.22),rgba(255,246,228,0.04));border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></svg>
+        <div style="font-weight:800;font-size:15.5px;margin-bottom:2px">Mascots</div>
+        <div style="font-size:12.5px;color:rgba(255,246,228,0.6)">Special attraction for kids</div>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(216,27,122,0.22),rgba(255,246,228,0.04));border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><path d="M3 2v7c0 1.1.9 2 2 2h1a2 2 0 0 0 2-2V2M7 2v20M17 2v20M17 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+        <div style="font-weight:800;font-size:15.5px;margin-bottom:2px">Food Stalls</div>
+        <div style="font-size:12.5px;color:rgba(255,246,228,0.6)">Snacks, chaat &amp; dinner</div>
+      </div>
+      <div style="background:linear-gradient(160deg,rgba(216,27,122,0.22),rgba(255,246,228,0.04));border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:10px"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18 12h3M16.3 7.7l2.1-2.1M8 21h8M10 17h4a4 4 0 1 0-4 0z"/></svg>
+        <div style="font-weight:800;font-size:15.5px;margin-bottom:2px">Lights &amp; Decor</div>
+        <div style="font-size:12.5px;color:rgba(255,246,228,0.6)">Stage, SFX &amp; photobooth</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:46px">
+      <span style="border:1px solid rgba(255,201,60,0.3);color:#ffc93c;font-weight:600;font-size:12.5px;padding:6px 14px;border-radius:999px">Photobooth zone</span>
+      <span style="border:1px solid rgba(255,201,60,0.3);color:#ffc93c;font-weight:600;font-size:12.5px;padding:6px 14px;border-radius:999px">Exciting games</span>
+      <span style="border:1px solid rgba(255,201,60,0.3);color:#ffc93c;font-weight:600;font-size:12.5px;padding:6px 14px;border-radius:999px">Shopping stalls</span>
+      <span style="border:1px solid rgba(255,201,60,0.3);color:#ffc93c;font-weight:600;font-size:12.5px;padding:6px 14px;border-radius:999px">VIP lounge</span>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(180deg,#2c0a33,#1e0621)">
+    <div style="max-width:1120px;margin:0 auto;padding:44px 20px">
+      <div style="font-weight:700;font-size:11.5px;letter-spacing:0.28em;text-transform:uppercase;color:#ff8f5c;margin-bottom:10px">Passes</div>
+      <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 22px;color:#ffc93c">One price, both nights open</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:22px">
+        <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.25);border-radius:22px;padding:22px">
+          <div style="font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:6px">Night 1 · Sat 17 Oct</div>
+          <div style="font-family:'Yatra One',cursive;font-size:26px;color:#fff6e4;margin-bottom:12px">Saptami</div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:12px"><span style="font-weight:900;font-size:38px;line-height:1;color:#ffc93c">₹{{ price }}</span><span style="font-size:13px;color:rgba(255,246,228,0.6)">per person</span></div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,201,60,0.14);border:1px solid rgba(255,201,60,0.32);color:#ffc93c;font-weight:700;font-size:11.5px;padding:5px 11px;border-radius:999px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Food included
+          </div>
+          <div style="font-size:11px;color:rgba(255,246,228,0.45);margin-top:12px">T&amp;C apply</div>
+        </div>
+        <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.25);border-radius:22px;padding:22px">
+          <div style="font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:6px">Night 2 · Sun 18 Oct</div>
+          <div style="font-family:'Yatra One',cursive;font-size:26px;color:#fff6e4;margin-bottom:12px">Asthami</div>
+          <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:12px"><span style="font-weight:900;font-size:38px;line-height:1;color:#ffc93c">₹{{ price }}</span><span style="font-size:13px;color:rgba(255,246,228,0.6)">per person</span></div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,201,60,0.14);border:1px solid rgba(255,201,60,0.32);color:#ffc93c;font-weight:700;font-size:11.5px;padding:5px 11px;border-radius:999px">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            Food included
+          </div>
+          <div style="font-size:11px;color:rgba(255,246,228,0.45);margin-top:12px">T&amp;C apply</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;color:rgba(255,246,228,0.75);margin-bottom:26px">
+        <div style="display:flex;gap:9px;align-items:flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>Choose one night or both — quantities set separately.</div>
+        <div style="display:flex;gap:9px;align-items:flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>Both days together: ₹{{ bothDays }} per person.</div>
+        <div style="display:flex;gap:9px;align-items:flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px"><path d="M20 6L9 17l-5-5"/></svg>Food is included with every valid ticket.</div>
+      </div>
+
+      <button type="button" onClick="{{ goBooking }}" style="display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:420px;background:linear-gradient(100deg,#ffc93c,#ff8f2c);color:#2b0a30;border:none;border-radius:999px;padding:17px 24px;font-family:'Outfit';font-weight:800;font-size:16.5px;cursor:pointer;box-shadow:0 14px 34px rgba(255,143,44,0.3)">
+        <span>Reserve Pass · food included</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div style="border-top:1px solid rgba(255,201,60,0.18);border-bottom:1px solid rgba(255,201,60,0.18);padding:40px 0;overflow:hidden;background:linear-gradient(180deg,#250829,#1e0621)">
+    <div style="max-width:1120px;margin:0 auto;padding:0 20px 22px">
+      <div style="font-weight:700;font-size:11.5px;letter-spacing:0.28em;text-transform:uppercase;color:#ff8f5c;margin-bottom:10px">Last year</div>
+      <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0;color:#ffc93c">Moments from the floor</h2>
+    </div>
+    <div style="display:flex;width:max-content;animation:marquee 60s linear infinite">
+      <div style="display:flex;gap:18px;padding-right:18px;align-items:center">
+        <div style="{{ frameA }}"><image-slot id="gal-1" shape="rect" placeholder="Last year photo 1" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-2" shape="rect" placeholder="Last year photo 2" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-3" shape="rect" placeholder="Last year photo 3" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-4" shape="rect" placeholder="Last year photo 4" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-5" shape="rect" placeholder="Last year photo 5" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-6" shape="rect" placeholder="Last year photo 6" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-7" shape="rect" placeholder="Last year photo 7" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-8" shape="rect" placeholder="Last year photo 8" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-9" shape="rect" placeholder="Last year photo 9" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-10" shape="rect" placeholder="Last year photo 10" style="width:100%;height:100%"></image-slot></div>
+      </div>
+      <div style="display:flex;gap:18px;padding-right:18px;align-items:center">
+        <div style="{{ frameA }}"><image-slot id="gal-1" shape="rect" placeholder="Last year photo 1" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-2" shape="rect" placeholder="Last year photo 2" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-3" shape="rect" placeholder="Last year photo 3" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-4" shape="rect" placeholder="Last year photo 4" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-5" shape="rect" placeholder="Last year photo 5" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-6" shape="rect" placeholder="Last year photo 6" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-7" shape="rect" placeholder="Last year photo 7" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-8" shape="rect" placeholder="Last year photo 8" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameA }}"><image-slot id="gal-9" shape="rect" placeholder="Last year photo 9" style="width:100%;height:100%"></image-slot></div>
+        <div style="{{ frameB }}"><image-slot id="gal-10" shape="rect" placeholder="Last year photo 10" style="width:100%;height:100%"></image-slot></div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+  <div style="max-width:1120px;margin:0 auto;padding:44px 20px 0">
+    <div data-venue-anchor="1" style="height:1px"></div>
+    <div style="font-weight:700;font-size:11.5px;letter-spacing:0.28em;text-transform:uppercase;color:#ff8f5c;margin-bottom:10px">The venue</div>
+    <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 20px;color:#ffc93c">Plutone Mall, 6th Floor</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:46px">
+      <div>
+        <p style="font-size:15px;line-height:1.7;color:rgba(255,246,228,0.78);margin:0 0 16px">Rourkela, Odisha. Take the mall lifts straight to the 6th floor — our team is at the entry desk from 5:30 PM both evenings.</p>
+        <a href="https://maps.app.goo.gl/tjwzcZjvxPKxjAwv6" style="display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14.5px;text-decoration:none">Open in Maps
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.22);border-radius:20px;padding:20px">
+        <div style="font-size:11.5px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:12px">Good to know</div>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13.5px;line-height:1.5;color:rgba(255,246,228,0.8)">
+          <div>Dress traditional — chaniya choli, kediyu, kurta.</div>
+          <div>Parking available in the mall basement.</div>
+          <div>Every attendee, including children, needs a ticket.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-weight:700;font-size:11.5px;letter-spacing:0.28em;text-transform:uppercase;color:#ff8f5c;margin-bottom:10px">Questions</div>
+    <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,4vw,38px);line-height:1.15;margin:0 0 20px;color:#ffc93c">Everything you asked us</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px;margin-bottom:46px">
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:18px;padding:18px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:5px;color:#ffc93c">How do I pay?</div>
+        <div style="font-size:13.5px;line-height:1.6;color:rgba(255,246,228,0.72)">Book now and our team calls you to collect the payment and send your tickets. Online payment is coming soon.</div>
+      </div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:18px;padding:18px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:5px;color:#ffc93c">How do I get my pass?</div>
+        <div style="font-size:13.5px;line-height:1.6;color:rgba(255,246,228,0.72)">Once payment is done we send it by email and WhatsApp. Show it at the entry desk — no printout needed.</div>
+      </div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:18px;padding:18px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:5px;color:#ffc93c">Is it safe for families?</div>
+        <div style="font-size:13.5px;line-height:1.6;color:rgba(255,246,228,0.72)">Yes. Security and volunteers are on the floor all evening, with a separate family seating area.</div>
+      </div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:18px;padding:18px">
+        <div style="font-weight:800;font-size:15px;margin-bottom:5px;color:#ffc93c">Can I cancel?</div>
+        <div style="font-size:13.5px;line-height:1.6;color:rgba(255,246,228,0.72)">Passes are non-refundable once paid, but you can transfer yours to a friend — just call us before the event.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:radial-gradient(120% 100% at 50% 0%, #5c1060 0%, #1e0621 70%);border-top:1px solid rgba(255,201,60,0.22)">
+    <div style="max-width:1120px;margin:0 auto;padding:40px 20px 34px">
+      <img src="assets/junction-logo.png" alt="Rourkela Junction Events" style="height:56px;width:auto;object-fit:contain;margin-bottom:18px" />
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:24px;align-items:start">
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:10px">Passes &amp; help</div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:4px;height:76px">
+            <a href="tel:9348087289" style="font-weight:800;font-size:18px;text-decoration:none">9348087289</a>
+            <a href="tel:9078039055" style="font-weight:600;font-size:13.5px;text-decoration:none;color:rgba(255,246,228,0.6)">9078039055</a>
+            <a href="mailto:works.rourkelaj@gmail.com" style="font-weight:600;font-size:13px;text-decoration:none;color:rgba(255,246,228,0.6)">works.rourkelaj@gmail.com</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:10px">Follow us</div>
+          <a href="https://www.instagram.com/rourkela_junction/" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;text-decoration:none;height:76px">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+            @rourkela_junction
+          </a>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:10px">Venue partner</div>
+          <div style="background:#fff;border-radius:18px;padding:12px 18px;width:fit-content;display:flex;align-items:center;height:76px"><img src="assets/plutone-logo.png" alt="Plutone Mall" style="height:52px;width:auto;object-fit:contain;display:block" /></div>
+        </div>
+        <div>
+          <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:10px">Media partner</div>
+          <div style="background:#fff;border-radius:18px;padding:8px;width:fit-content;display:flex;align-items:center;height:76px"><img src="assets/raurkela-shines-logo.png" alt="Raurkela Shines" style="height:60px;width:auto;object-fit:contain;display:block" /></div>
+        </div>
+      </div>
+      <div style="font-size:12.5px;color:rgba(255,246,228,0.5);margin-top:24px;margin-bottom:22px">Dress traditional · Bring your energy · Celebrate togetherness</div>
+
+      <div style="height:1px;background:rgba(255,201,60,0.2);margin-bottom:20px"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:16px">
+        <button type="button" onClick="{{ goAbout }}" style="background:transparent;border:none;color:#ffc93c;font-family:'Outfit';font-weight:700;font-size:13px;cursor:pointer;padding:0">About Us</button>
+        <button type="button" onClick="{{ goTerms }}" style="background:transparent;border:none;color:#ffc93c;font-family:'Outfit';font-weight:700;font-size:13px;cursor:pointer;padding:0">Terms &amp; Conditions</button>
+        <button type="button" onClick="{{ goRefund }}" style="background:transparent;border:none;color:#ffc93c;font-family:'Outfit';font-weight:700;font-size:13px;cursor:pointer;padding:0">Refund Policy</button>
+        <button type="button" onClick="{{ goPrivacy }}" style="background:transparent;border:none;color:#ffc93c;font-family:'Outfit';font-weight:700;font-size:13px;cursor:pointer;padding:0">Privacy Policy</button>
+        <a href="https://www.instagram.com/rourkela_junction/" style="font-weight:700;font-size:13px;text-decoration:none">Instagram</a>
+      </div>
+      <div style="max-width:64ch">
+        <div style="font-weight:800;font-size:13px;letter-spacing:0.18em;text-transform:uppercase;color:#ffc93c;margin-bottom:6px">Rourkela Junction Events</div>
+        <div style="font-size:12.5px;line-height:1.75;color:rgba(255,246,228,0.55)">A brand owned and operated by Junction India Enterprises</div>
+        <div style="font-size:12.5px;line-height:1.75;color:rgba(255,246,228,0.55)">GSTIN: 21IWZPM0456B1ZF</div>
+        <div style="font-size:12px;line-height:1.75;color:rgba(255,246,228,0.4);margin-top:6px">© 2026 Junction India Enterprises. All Rights Reserved.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="position:sticky;bottom:0;z-index:6;background:rgba(30,6,33,0.94);backdrop-filter:blur(10px);border-top:1px solid rgba(255,201,60,0.3)">
+    <div style="max-width:1120px;margin:0 auto;padding:11px 18px">
+      <button type="button" onClick="{{ goBooking }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:linear-gradient(100deg,#ffc93c,#ff8f2c);color:#2b0a30;border:none;border-radius:999px;padding:15px 22px;font-family:'Outfit';font-weight:800;font-size:15.5px;cursor:pointer">
+        <span style="display:block;text-align:left;line-height:1.25">Reserve Pass Now · ₹{{ price }}<span style="display:block;font-weight:600;font-size:11.5px;opacity:.75">Food included · T&amp;C apply</span></span>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:100%;background:radial-gradient(110% 60% at 20% 0%, #4a0d50 0%, #1e0621 60%)">
+  <div style="background:rgba(30,6,33,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,201,60,0.28);position:sticky;top:0;z-index:6">
+    <div style="max-width:760px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px">
+      <button type="button" onClick="{{ goHome }}" aria-label="Go back" style="width:44px;height:44px;flex:none;border-radius:50%;border:1px solid rgba(255,201,60,0.4);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div style="font-family:'Yatra One',cursive;font-size:18px;color:#ffc93c;line-height:1.2">About us</div>
+    </div>
+  </div>
+
+  <div style="max-width:760px;margin:0 auto;padding:30px 18px 48px">
+    <img src="assets/junction-logo.png" alt="Rourkela Junction Events" style="height:64px;width:auto;object-fit:contain;margin-bottom:20px" />
+    <h1 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(26px,6.5vw,38px);line-height:1.15;color:#ffc93c;margin:0 0 16px">Welcome to the junction where life is celebrated</h1>
+    <p style="font-size:15px;line-height:1.75;color:rgba(255,246,228,0.8);margin:0 0 14px"><strong style="color:#fff6e4">Rourkela Junction Events</strong> is an event-hosting and experience brand operated by <strong style="color:#fff6e4">Junction India Enterprises</strong>.</p>
+    <p style="font-size:15px;line-height:1.75;color:rgba(255,246,228,0.8);margin:0 0 14px">Based in Rourkela, we create cultural, festive and entertainment experiences that bring audiences, performers, creators and brands together.</p>
+    <p style="font-size:15px;line-height:1.75;color:rgba(255,246,228,0.8);margin:0 0 28px">Our flagship event, <strong style="color:#fff6e4">Dhinchak Dandiya</strong>, celebrates Navratri through music, dance, food and a vibrant community experience.</p>
+
+    <div style="font-weight:700;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;color:#ff8f5c;margin-bottom:14px">Our work includes</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:30px">
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:16px;padding:14px 16px;font-size:14px;font-weight:600">Public and cultural events</div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:16px;padding:14px 16px;font-size:14px;font-weight:600">Ticketed entertainment experiences</div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:16px;padding:14px 16px;font-size:14px;font-weight:600">Brand activations</div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:16px;padding:14px 16px;font-size:14px;font-weight:600">Sponsorship integrations</div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:16px;padding:14px 16px;font-size:14px;font-weight:600">Influencer and creator collaborations</div>
+      <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.2);border-radius:16px;padding:14px 16px;font-size:14px;font-weight:600">Wedding and private-event support</div>
+    </div>
+
+    <p style="font-size:15px;line-height:1.75;color:rgba(255,246,228,0.8);margin:0 0 30px">Our goal is to create well-organised celebrations that audiences enjoy, partners can participate in meaningfully and Rourkela can look forward to every year.</p>
+
+    <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px">
+      <div style="font-weight:700;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;color:#ff8f5c;margin-bottom:12px">Legal entity</div>
+      <div style="font-size:13.5px;line-height:1.75;color:rgba(255,246,228,0.78)">
+        Rourkela Junction Events is a brand operated by Junction India Enterprises.<br /><br />
+        <strong style="color:#fff6e4">Registered office</strong><br />
+        Ground Floor, Plot No. 1/1041, Jalda, C Block, Rourkela, Sundargarh, Odisha – 769043, India<br /><br />
+        <strong style="color:#fff6e4">GSTIN</strong> 21IWZPM0456B1ZF<br />
+        <a href="https://www.instagram.com/rourkela_junction/" style="text-decoration:none">instagram.com/rourkela_junction</a>
+      </div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isPolicy }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:100%;background:radial-gradient(110% 60% at 20% 0%, #4a0d50 0%, #1e0621 60%)">
+  <div style="background:rgba(30,6,33,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,201,60,0.28);position:sticky;top:0;z-index:6">
+    <div style="max-width:760px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px">
+      <button type="button" onClick="{{ goHome }}" aria-label="Go back" style="width:44px;height:44px;flex:none;border-radius:50%;border:1px solid rgba(255,201,60,0.4);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div style="font-family:'Yatra One',cursive;font-size:18px;color:#ffc93c;line-height:1.2">Policies</div>
+    </div>
+  </div>
+
+  <div style="max-width:760px;margin:0 auto;padding:26px 18px 48px">
+    <h1 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(24px,6vw,34px);color:#ffc93c;margin:0 0 10px">Legal information</h1>
+    <p style="font-size:14px;line-height:1.75;color:rgba(255,246,228,0.78);margin:0 0 8px">Terms and Conditions · Ticket and Entry Policy · Refund and Cancellation Policy · Privacy Policy</p>
+    <p style="font-size:12.5px;color:rgba(255,246,228,0.5);margin:0 0 20px">Last updated 29 August 2026</p>
+
+    <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.22);border-radius:18px;padding:18px;margin-bottom:26px">
+      <p style="font-size:13.5px;line-height:1.75;color:rgba(255,246,228,0.78);margin:0 0 14px">This website and <strong style="color:#fff6e4">Dhinchak Dandiya 2026</strong> are operated by <strong style="color:#fff6e4">Junction India Enterprises</strong> under the brand name <strong style="color:#fff6e4">Rourkela Junction Events</strong>. In this document, "Organizer", "we", "us" and "our" refer to Junction India Enterprises, operating under the brand Rourkela Junction Events.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;font-size:13px;line-height:1.7;color:rgba(255,246,228,0.72)">
+        <div>
+          <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:4px">Registered office</div>
+          Ground Floor, Plot No. 1/1041, Jalda, C Block, Rourkela, Sundargarh, Odisha – 769043, India
+        </div>
+        <div>
+          <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:#ff8f5c;font-weight:700;margin-bottom:4px">Contact</div>
+          GSTIN: 21IWZPM0456B1ZF<br />
+          Support: 10:00 AM–10:00 PM, all seven days<br />
+          Phone / WhatsApp: <a href="tel:9348087289" style="text-decoration:none">9348087289</a> · <a href="tel:9078039055" style="text-decoration:none">9078039055</a><br />
+          Email: <a href="mailto:works.rourkelaj@gmail.com" style="text-decoration:none">works.rourkelaj@gmail.com</a><br />
+          <a href="https://www.instagram.com/rourkela_junction/" style="text-decoration:none">instagram.com/rourkela_junction</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px">
+      <div onClick="{{ goTerms }}" style="{{ tabTermsStyle }}">Terms</div>
+      <div onClick="{{ goRefund }}" style="{{ tabRefundStyle }}">Refund</div>
+      <div onClick="{{ goPrivacy }}" style="{{ tabPrivacyStyle }}">Privacy</div>
+    </div>
+
+    <sc-if value="{{ showTerms }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:26px;color:#ffc93c;margin:0 0 16px">Terms &amp; Conditions</h2>
+      <div style="display:flex;flex-direction:column;gap:18px;font-size:14px;line-height:1.75;color:rgba(255,246,228,0.78)">
+        <div><strong style="color:#fff6e4">1 · Acceptance.</strong> By using this website, purchasing a ticket or attending the event, you agree to these Terms and Conditions, Ticket and Entry Policy, Refund and Cancellation Policy, and Privacy Policy. Please review this page before completing a ticket purchase.</div>
+        <div><strong style="color:#fff6e4">2 · Event details.</strong> Dhinchak Dandiya 2026, on 17 and 18 October 2026, 6:00 PM–10:00 PM, at the 6th Floor, Plutone Mall, Rourkela. The Organizer may communicate separate information regarding the entry gate, parking, reporting time, security checks and venue access before the event. The programme, performers, food menu, activities and schedule may be modified where reasonably required for operational, safety or regulatory reasons.</div>
+        <div><strong style="color:#fff6e4">3 · Ticket price.</strong> Tickets are sold separately for each event day — ₹499 per person for 17 October, ₹499 per person for 18 October, ₹998 per person for both days. There are no early-bird or discounted ticket categories. Food is included with every valid ticket for the applicable event day. The amount displayed during booking is the final amount payable, including applicable taxes unless clearly stated otherwise before payment.</div>
+        <div><strong style="color:#fff6e4">4 · Ticket quantity.</strong> There is no fixed limit on the number of tickets a customer may purchase. All purchases remain subject to availability, successful payment and reasonable fraud-prevention or payment-verification checks. Tickets added on the booking page are not reserved until payment is successfully completed and the booking is confirmed.</div>
+        <div><strong style="color:#fff6e4">5 · Online payments.</strong> Online ticket payments will be added soon. Once activated, payments may be securely processed through Razorpay or Cashfree; the applicable gateway will be displayed during checkout. The Organizer does not directly collect or store complete card details, UPI PINs, bank passwords or payment OTPs. A payment deduction alone does not confirm a booking — a booking is confirmed only once you receive a booking confirmation or valid ticket ID. If payment is deducted but no confirmation is received, contact Support with your registered mobile number, email address, payment transaction ID, date and amount of payment, and a payment screenshot if available. Never share your UPI PIN, OTP, card PIN or banking password with anyone, including anyone claiming to represent the event.</div>
+        <div><strong style="color:#fff6e4">6 · Customer information.</strong> Customers must provide a valid mobile number, and an email address where requested, while booking. We use these details to issue tickets, communicate venue instructions, provide event updates and handle support or refund requests. The Organizer is not responsible for ticket-delivery failures caused by incorrect or incomplete details submitted by the customer.</div>
+        <div><strong style="color:#fff6e4">7 · Ticket delivery.</strong> After successful payment you receive a booking confirmation and ticket ID at your registered email address. Digital tickets are ordinarily issued within 48 hours of successful payment. Depending on the final operational process, customers may also receive or collect a physical event pass before the event or at the venue. If a confirmed digital ticket is not received within 48 hours, contact Support.</div>
+        <div><strong style="color:#fff6e4">8 · Unnamed tickets and transfers.</strong> Tickets do not carry the attendee's name. The person presenting a valid, unused ticket may use it for entry, subject to successful verification. The original purchaser is responsible for protecting the booking email, ticket ID and QR code; if a ticket is shared or forwarded, the first successful verification is treated as valid use. Tickets must not be duplicated, resold at a premium or used for unauthorised commercial promotion.</div>
+        <div><strong style="color:#fff6e4">9 · Entry and verification.</strong> Each ticket permits entry for one person, only on the date stated on the ticket, and one successful verification. The attendee must present the original booking email or valid digital ticket from the email inbox. Screenshots, edited images, photocopies, forwarded screenshots or duplicate QR codes may be rejected — a screenshot of a ticket is not proof of validity. We may request the ticket ID, booking mobile number, registered email address or payment reference to verify a booking. Once a ticket has been scanned or marked as used it cannot be used again. Admission remains subject to ticket validity, security checks, venue rules and event-safety requirements.</div>
+        <div><strong style="color:#fff6e4">10 · Children and minors.</strong> Every attendee, including children, requires a separate valid ticket. Children must remain under the supervision of a parent or responsible adult throughout the event. Parents and guardians are responsible for determining whether the sound levels, crowd conditions, food and event environment are appropriate for the child.</div>
+        <div><strong style="color:#fff6e4">11 · Physical passes.</strong> Where physical passes are issued, attendees must carry and display them as instructed. Lost, stolen, damaged or transferred physical passes may not be replaced unless the Organizer can independently verify that the corresponding ticket remains unused. Any replacement is subject to successful verification and operational feasibility.</div>
+        <div><strong style="color:#fff6e4">12 · Food.</strong> Food is included with each valid ticket for the applicable event day. The menu, serving arrangement, quantity and service schedule are determined by the Organizer. Specific ingredients, dietary preferences or allergen-free preparation cannot be guaranteed unless expressly confirmed. Attendees with food allergies or medical dietary restrictions should verify suitability before consuming any food. Food coupons or tokens, where issued, have no cash value and are valid only during the applicable event day.</div>
+        <div><strong style="color:#fff6e4">13 · Attendee conduct.</strong> The Organizer may refuse entry or remove a person for violence, harassment or threatening behaviour; intoxication or disorderly conduct; possession of illegal, prohibited or dangerous items; damage to venue or event property; interference with performers, staff or other attendees; ticket fraud, duplication or unauthorised resale; failure to follow security or safety instructions; or violation of applicable law or venue rules. No refund is issued where entry is refused or a person is removed because of misconduct, an invalid ticket or violation of these terms.</div>
+        <div><strong style="color:#fff6e4">14 · Safety and belongings.</strong> Attendees must follow all security, crowd-management and emergency instructions. The Organizer is not responsible for unattended, lost, misplaced, damaged or stolen personal belongings, except where liability cannot lawfully be excluded. Report any unsafe condition to event staff immediately.</div>
+        <div><strong style="color:#fff6e4">15 · Photography and recording.</strong> Photography and video recording may take place during the event for security, documentation, publicity, advertising, social media and future event promotion. By entering the venue, attendees acknowledge that they may appear incidentally in crowd photographs or recordings. The Organizer will not use an identifiable attendee as a standalone commercial endorsement without appropriate permission. Unauthorised professional photography, commercial recording, live broadcasting or use of drones may be restricted.</div>
+        <div><strong style="color:#fff6e4">16 · Intellectual property.</strong> The event name, logos, designs, website content, photographs, videos and promotional materials owned by the Organizer may not be copied, modified, sold, republished or used commercially without written permission. Third-party names, trademarks and partner logos remain the property of their respective owners.</div>
+        <div><strong style="color:#fff6e4">17 · Third-party services.</strong> The website may link to payment gateways, Google Maps, Instagram and other third-party platforms. These services operate under their own terms and privacy policies. The Organizer is not responsible for the independent functioning of third-party services, except where required by applicable law.</div>
+        <div><strong style="color:#fff6e4">18 · Limitation of liability.</strong> To the extent permitted by law, the Organizer is not responsible for indirect losses arising from personal travel, accommodation, transport, work schedules or other arrangements made by an attendee. Nothing in these terms excludes any consumer right, remedy or liability that cannot lawfully be excluded.</div>
+        <div><strong style="color:#fff6e4">19 · Governing law.</strong> These terms are governed by the laws of India. Subject to applicable consumer-protection rights, legal proceedings relating to the event, website or tickets fall under the jurisdiction of the competent courts in Rourkela or Sundargarh, Odisha.</div>
+        <div><strong style="color:#fff6e4">20 · Policy updates.</strong> The Organizer may update this page to reflect changes in law, event operations, payment services or security requirements. The latest version is identified by the "Last updated" date. If any provision is found invalid or unenforceable, the remaining provisions continue to apply.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ showPrivacy }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:26px;color:#ffc93c;margin:0 0 16px">Privacy Policy</h2>
+      <div style="display:flex;flex-direction:column;gap:18px;font-size:14px;line-height:1.75;color:rgba(255,246,228,0.78)">
+        <div><strong style="color:#fff6e4">1 · Information we collect.</strong> Depending on how you use the website or event services, we may collect your name where requested; email address; mobile number; ticket date and quantity; booking and ticket IDs; transaction reference and payment status; support messages and complaints; device, browser, IP address and website-usage information; ticket-verification and entry records; and photographs or videos captured during the event. We do not intentionally collect complete card information, UPI PINs, banking passwords or payment OTPs.</div>
+        <div><strong style="color:#fff6e4">2 · How we use information.</strong> To process and confirm bookings; issue digital tickets or physical passes; communicate event and venue information; verify entry and prevent ticket duplication or fraud; provide customer support; investigate payments and process refunds; maintain event security; meet tax, accounting and legal requirements; improve the website and event experience; and send promotional communication where consent has been provided or is otherwise permitted by law. Essential booking, payment, safety and event updates may be sent even if you do not opt in to promotional messages.</div>
+        <div><strong style="color:#fff6e4">3 · Consent and communication choices.</strong> By submitting information for booking or support, you authorise its use to provide the requested service. Where marketing consent is requested it is optional, and you may withdraw promotional consent using an unsubscribe option or by contacting Support.</div>
+        <div><strong style="color:#fff6e4">4 · Information sharing.</strong> Relevant information may be shared with Razorpay, Cashfree or another payment provider; email, messaging, ticketing, hosting and technology providers; Plutone Mall and authorised venue personnel; event security and entry staff; event-service providers; accountants, auditors and professional advisers; and government, judicial, regulatory or law-enforcement authorities where legally required. Personal information is not sold as an independent commercial database.</div>
+        <div><strong style="color:#fff6e4">5 · Data retention.</strong> Information is retained only for as long as reasonably required for ticket fulfilment, entry verification, customer support, fraud prevention, dispute resolution, accounting, taxation and legal obligations. Information no longer required may be securely deleted, anonymised or restricted from ordinary use.</div>
+        <div><strong style="color:#fff6e4">6 · Security.</strong> Reasonable technical and administrative measures are used to protect personal information. No online transmission or storage system can be guaranteed to be completely secure. Customers are responsible for keeping booking emails, ticket IDs and QR codes confidential.</div>
+        <div><strong style="color:#fff6e4">7 · Cookies and analytics.</strong> The website may use essential cookies or similar technologies for security, booking continuity, preferences and website performance. Analytics or advertising technologies are used with appropriate notice or consent where required. You may restrict cookies using browser settings, although some website functions may then operate differently.</div>
+        <div><strong style="color:#fff6e4">8 · Children's information.</strong> Tickets for children must be purchased and managed by a parent or legal guardian. The website is not intended to independently collect information directly from children. A parent or guardian who believes a child's information has been collected improperly may contact Support.</div>
+        <div><strong style="color:#fff6e4">9 · Privacy requests.</strong> You may contact us to request access to information associated with your booking; correction of inaccurate information; withdrawal of optional marketing consent; deletion of information no longer required; or resolution of a privacy-related grievance. Some information may be retained where required for legal, taxation, fraud-prevention, payment or dispute-resolution purposes. Reasonable identity or booking verification may be required before processing a request.</div>
+        <div><strong style="color:#fff6e4">10 · External links.</strong> Google Maps, Instagram, Razorpay, Cashfree and other external platforms operate under their own privacy policies.</div>
+        <div><strong style="color:#fff6e4">11 · Privacy and grievance contact.</strong> Grievance Officer, Junction India Enterprises — phone / WhatsApp <a href="tel:9348087289" style="text-decoration:none">9348087289</a>, email <a href="mailto:works.rourkelaj@gmail.com" style="text-decoration:none">works.rourkelaj@gmail.com</a>, support hours 10:00 AM–10:00 PM all seven days, at Ground Floor, Plot No. 1/1041, Jalda, C Block, Rourkela, Sundargarh, Odisha – 769043, India. Consumer complaints should include your name, ticket or order ID, registered contact details and a clear description of the issue. We aim to acknowledge consumer complaints within 48 hours and resolve them within one month, in accordance with applicable requirements.</div>
+      </div>
+    </div>
+    </sc-if>
+
+    <sc-if value="{{ showRefund }}" hint-placeholder-val="{{ false }}">
+    <div>
+      <h2 style="font-family:'Yatra One',cursive;font-weight:400;font-size:26px;color:#ffc93c;margin:0 0 16px">Refund Policy</h2>
+      <div style="display:flex;flex-direction:column;gap:18px;font-size:14px;line-height:1.75;color:rgba(255,246,228,0.78)">
+        <div><strong style="color:#fff6e4">1 · Customer cancellations.</strong> Tickets are non-refundable and non-cancellable after successful purchase. Refunds will not ordinarily be provided for a change of personal plans; inability to attend; illness or personal emergency; travel delay or cancellation; selection of an incorrect event date; late arrival; failure to present a valid ticket; a ticket that has already been scanned; loss or unauthorised sharing of a ticket; entry refusal caused by misconduct; or dissatisfaction with an individual performer, activity, programme element or food choice. This policy does not limit any remedy required under applicable law.</div>
+        <div><strong style="color:#fff6e4">2 · Event cancellation by the Organizer.</strong> If the Organizer cancels the entire event and does not announce a replacement date, eligible customers receive a refund of the ticket amount paid. Refund instructions are communicated through the website, registered booking details or the official Instagram account. Once initiated, a refund may take approximately 7–10 business days to appear in the original payment method, depending on Razorpay, Cashfree, your bank or another payment provider.</div>
+        <div><strong style="color:#fff6e4">3 · Cancellation of one event day.</strong> If only one event day is cancelled, customers holding a ticket for that day receive the applicable announced refund, and customers who purchased tickets for both days receive the applicable adjustment for the cancelled day.</div>
+        <div><strong style="color:#fff6e4">4 · Rescheduled event.</strong> If the event is rescheduled, existing tickets ordinarily remain valid for the revised date. The Organizer will announce whether a refund, ticket transfer, credit or alternative arrangement is offered, depending on the circumstances and applicable law.</div>
+        <div><strong style="color:#fff6e4">5 · Venue or programme changes.</strong> A change to the entry gate, access route, parking arrangement, reporting instructions, programme, performer, food menu or event sequence does not automatically constitute event cancellation. If the venue must be changed due to circumstances beyond the Organizer's reasonable control, customers are informed through official channels.</div>
+        <div><strong style="color:#fff6e4">6 · Force majeure.</strong> The Organizer may reschedule, relocate, modify, partially cancel or cancel the event because of severe weather or natural disaster; public emergency or epidemic; government or legal restrictions; civil disturbance; safety or security concerns; venue unavailability; or another circumstance beyond the Organizer's reasonable control. The Organizer will announce whether tickets remain valid and whether a full refund, partial refund, credit or alternative arrangement applies, subject to applicable law.</div>
+        <div><strong style="color:#fff6e4">7 · Duplicate or failed payments.</strong> If you are charged more than once for the same confirmed booking, or payment is deducted without ticket issuance, the transaction is investigated. A verified duplicate or failed payment is refunded to the original payment method.</div>
+        <div><strong style="color:#fff6e4">8 · Refund support.</strong> A refund-related request must include your ticket or order ID, registered email address, registered mobile number, payment transaction ID, date and amount of payment, and a description of the issue. Refunds are never processed through unofficial social-media accounts or personal payment accounts.</div>
+      </div>
+    </div>
+    </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isBooking }}" hint-placeholder-val="{{ false }}">
+<div style="background:radial-gradient(110% 60% at 20% 0%, #4a0d50 0%, #1e0621 60%);min-height:100%">
+  <div style="background:rgba(30,6,33,0.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,201,60,0.28);position:sticky;top:0;z-index:6">
+    <div style="max-width:720px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;gap:12px">
+      <button type="button" onClick="{{ goHome }}" aria-label="Go back" style="width:44px;height:44px;flex:none;border-radius:50%;border:1px solid rgba(255,201,60,0.4);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffc93c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div style="flex:1;min-width:0">
+        <div style="font-family:'Yatra One',cursive;font-size:18px;color:#ffc93c;line-height:1.2">Reserve your passes</div>
+        <div style="font-size:11.5px;color:rgba(255,246,228,0.6)">₹{{ price }} per person, per night</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:720px;margin:0 auto;padding:24px 18px 0">
+    <div style="font-weight:700;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;color:#ff8f5c;margin-bottom:12px">Step 1 · How many passes?</div>
+    <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:10px">
+      <div style="{{ day1CardStyle }}">
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <div style="flex:1;min-width:140px">
+            <div style="font-family:'Yatra One',cursive;font-size:21px;color:#fff6e4;line-height:1.2">Saptami</div>
+            <div style="font-size:12.5px;color:rgba(255,246,228,0.62)">Sat 17 Oct · ₹{{ price }} each</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex:none">
+            <button type="button" onClick="{{ decDay1 }}" aria-label="One less pass for 17 October" style="{{ stepBtnStyle }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+            </button>
+            <span style="font-weight:900;font-size:23px;min-width:26px;text-align:center">{{ day1 }}</span>
+            <button type="button" onClick="{{ incDay1 }}" aria-label="One more pass for 17 October" style="{{ stepBtnPrimaryStyle }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div style="{{ day2CardStyle }}">
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <div style="flex:1;min-width:140px">
+            <div style="font-family:'Yatra One',cursive;font-size:21px;color:#fff6e4;line-height:1.2">Asthami</div>
+            <div style="font-size:12.5px;color:rgba(255,246,228,0.62)">Sun 18 Oct · ₹{{ price }} each</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;flex:none">
+            <button type="button" onClick="{{ decDay2 }}" aria-label="One less pass for 18 October" style="{{ stepBtnStyle }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+            </button>
+            <span style="font-weight:900;font-size:23px;min-width:26px;text-align:center">{{ day2 }}</span>
+            <button type="button" onClick="{{ incDay2 }}" aria-label="One more pass for 18 October" style="{{ stepBtnPrimaryStyle }}">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:12.5px;color:rgba(255,246,228,0.55);margin-bottom:28px">Coming both nights? Add passes to both — it stays one booking.</div>
+    <sc-if value="{{ errors.qty }}" hint-placeholder-val="{{ false }}"><div style="background:#d81b7a;color:#fff;font-size:13px;font-weight:600;padding:11px 14px;border-radius:12px;margin-bottom:24px">Please add at least one pass to continue</div></sc-if>
+
+    <div style="font-weight:700;font-size:11.5px;letter-spacing:0.24em;text-transform:uppercase;color:#ff8f5c;margin-bottom:12px">Step 2 · Your details</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:14px">
+      <div>
+        <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:7px;color:rgba(255,246,228,0.7)">First name</label>
+        <input value="{{ firstName }}" onChange="{{ onFirstName }}" placeholder="First name" style="{{ firstNameInputStyle }}" />
+        <sc-if value="{{ errors.firstName }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#ff8f5c;font-weight:600;margin-top:6px">Please type your first name</div></sc-if>
+      </div>
+      <div>
+        <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:7px;color:rgba(255,246,228,0.7)">Last name</label>
+        <input value="{{ lastName }}" onChange="{{ onLastName }}" placeholder="Last name" style="{{ lastNameInputStyle }}" />
+        <sc-if value="{{ errors.lastName }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#ff8f5c;font-weight:600;margin-top:6px">Please type your last name</div></sc-if>
+      </div>
+      <div>
+        <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:7px;color:rgba(255,246,228,0.7)">Mobile number</label>
+        <input value="{{ phone }}" onChange="{{ onPhone }}" placeholder="10 digit mobile number" style="{{ phoneInputStyle }}" />
+        <sc-if value="{{ errors.phone }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#ff8f5c;font-weight:600;margin-top:6px">Please check the 10 digit number</div></sc-if>
+      </div>
+    </div>
+    <div style="margin-bottom:28px">
+      <label style="display:block;font-size:12.5px;font-weight:600;margin-bottom:7px;color:rgba(255,246,228,0.7)">Email <span style="color:rgba(255,246,228,0.45);font-weight:500">(optional)</span> — we send your pass here</label>
+      <input value="{{ email }}" onChange="{{ onEmail }}" placeholder="yourname@gmail.com" style="{{ emailInputStyle }}" />
+      <sc-if value="{{ errors.email }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#ff8f5c;font-weight:600;margin-top:6px">Please check the email address</div></sc-if>
+      <div style="font-size:12px;color:rgba(255,246,228,0.55);margin-top:7px">No email? No problem — we will send your pass on WhatsApp instead.</div>
+    </div>
+
+    <div onClick="{{ toggleTerms }}" style="{{ termsBoxStyle }}">
+      <div style="{{ checkboxStyle }}">
+        <sc-if value="{{ accepted }}" hint-placeholder-val="{{ false }}">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </sc-if>
+      </div>
+      <div style="font-size:13px;line-height:1.6;color:rgba(255,246,228,0.82)">I have read and accept the <strong style="color:#ffc93c">Terms &amp; Conditions</strong>, <strong style="color:#ffc93c">Refund Policy</strong> and <strong style="color:#ffc93c">Privacy Policy</strong>. Tickets are non-refundable once paid.</div>
+    </div>
+    <sc-if value="{{ errors.accepted }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:#ff8f5c;font-weight:600;margin:-14px 0 22px 2px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Please accept the terms and conditions to continue
+      </div>
+    </sc-if>
+
+    <div style="background:rgba(255,201,60,0.08);border:1px solid rgba(255,201,60,0.3);border-radius:20px;padding:18px;margin-bottom:22px">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,201,60,0.16);color:#ffc93c;font-weight:700;font-size:11.5px;padding:5px 11px;border-radius:999px;margin-bottom:14px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Food included with every pass
+      </div>
+      <sc-if value="{{ hasDay1 }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:9px"><span style="color:rgba(255,246,228,0.72)">{{ day1 }} × Saptami, 17 Oct</span><span style="font-weight:700">₹{{ day1Total }}</span></div>
+      </sc-if>
+      <sc-if value="{{ hasDay2 }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:9px"><span style="color:rgba(255,246,228,0.72)">{{ day2 }} × Asthami, 18 Oct</span><span style="font-weight:700">₹{{ day2Total }}</span></div>
+      </sc-if>
+      <div style="height:1px;background:rgba(255,201,60,0.25);margin:11px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font-weight:700;font-size:14px;color:rgba(255,246,228,0.8)">{{ totalQty }} passes total</span><span style="font-family:'Outfit';font-weight:900;font-size:27px;color:#ffc93c">₹{{ subtotal }}</span></div>
+    </div>
+  </div>
+
+  <div style="position:sticky;bottom:0;background:rgba(30,6,33,0.94);backdrop-filter:blur(10px);border-top:1px solid rgba(255,201,60,0.3);z-index:6">
+    <div style="max-width:720px;margin:0 auto;padding:12px 18px">
+      <button type="button" onClick="{{ submitBooking }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;width:100%;background:linear-gradient(100deg,#ffc93c,#ff8f2c);color:#2b0a30;border:none;border-radius:999px;padding:16px 22px;font-family:'Outfit';font-weight:800;font-size:16px;cursor:pointer">
+        <span>Reserve Pass Now · ₹{{ subtotal }}</span>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </button>
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px dashed rgba(255,201,60,0.35);color:rgba(255,246,228,0.45);border-radius:999px;padding:13px 22px;font-weight:700;font-size:14.5px;margin-top:9px;cursor:not-allowed">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Pay Now — coming soon
+      </div>
+      <div style="text-align:center;font-size:12px;color:rgba(255,246,228,0.6);margin-top:9px">Nothing to pay now. Your passes are only confirmed once payment is done on our call.</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isConfirm }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:100%">
+  <div style="position:relative;background:radial-gradient(110% 90% at 50% 0%, #5c1060 0%, #1e0621 70%);overflow:hidden">
+    <div style="position:absolute;width:360px;height:360px;left:50%;margin-left:-180px;top:-160px;background:radial-gradient(circle,#ffc93c 0%,transparent 65%);opacity:.35;animation:glow 8s ease-in-out infinite;pointer-events:none"></div>
+    <div style="max-width:660px;margin:0 auto;padding:46px 20px 34px;position:relative;container-type:inline-size">
+      <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(140deg,#ffc93c,#ff8f2c);display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 12px 30px rgba(255,143,44,0.35)">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#2b0a30" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h1 style="font-family:'Yatra One',cursive;font-weight:400;font-size:clamp(28px,9cqw,46px);line-height:1.05;margin:0 0 10px;color:#ffc93c;overflow-wrap:break-word">Pass reserved</h1>
+      <div style="font-size:15px;line-height:1.6;color:rgba(255,246,228,0.8)">Your passes are reserved under this ID — <strong style="color:#fff6e4">not confirmed yet</strong>. They are confirmed only after payment, which our team will collect on a call shortly.</div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(90deg,#ffc93c,#ff8f2c);color:#2b0a30">
+    <div style="max-width:660px;margin:0 auto;padding:16px 20px;display:flex;flex-wrap:wrap;gap:4px 18px;align-items:baseline">
+      <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:800">Reservation ID · payment pending</div>
+      <div style="font-weight:900;font-size:26px;letter-spacing:0.03em">{{ bookingId }}</div>
+    </div>
+  </div>
+
+  <div style="max-width:660px;margin:0 auto;padding:26px 20px 44px">
+    <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.25);border-radius:20px;padding:20px;margin-bottom:16px;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px"><span style="color:rgba(255,246,228,0.62)">Event</span><span style="font-weight:700;text-align:right">Dhinchak Dandiya 2026</span></div>
+      <sc-if value="{{ hasDay1 }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px"><span style="color:rgba(255,246,228,0.62)">Saptami, 17 Oct</span><span style="font-weight:700;text-align:right">{{ day1 }} passes · ₹{{ day1Total }}</span></div>
+      </sc-if>
+      <sc-if value="{{ hasDay2 }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px"><span style="color:rgba(255,246,228,0.62)">Asthami, 18 Oct</span><span style="font-weight:700;text-align:right">{{ day2 }} passes · ₹{{ day2Total }}</span></div>
+      </sc-if>
+      <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px"><span style="color:rgba(255,246,228,0.62)">Where</span><span style="font-weight:700;text-align:right">Plutone Mall, 6th Floor · 6–10 PM</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px"><span style="color:rgba(255,246,228,0.62)">Name</span><span style="font-weight:700;text-align:right">{{ nameOrGuest }}</span></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;font-size:14px"><span style="color:rgba(255,246,228,0.62)">Mobile</span><span style="font-weight:700;text-align:right">{{ phoneOrDash }}</span></div>
+      <div style="height:1px;background:rgba(255,201,60,0.25)"></div>
+      <div style="display:flex;justify-content:space-between;gap:16px;align-items:baseline"><span style="font-weight:700;font-size:14px">Amount due on call</span><span style="font-weight:900;font-size:25px;color:#ffc93c">₹{{ subtotal }}</span></div>
+      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(216,27,122,0.18);border:1px solid rgba(216,27,122,0.45);color:#ff8f5c;font-weight:700;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px;width:fit-content">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        Reserved · payment pending
+      </div>
+    </div>
+
+    <div style="background:rgba(216,27,122,0.14);border:1px solid rgba(216,27,122,0.45);border-radius:20px;padding:18px;margin-bottom:16px">
+      <div style="font-weight:800;font-size:15px;margin-bottom:6px;color:#ff8f5c">Take a screenshot of this page</div>
+      <div style="font-size:13.5px;line-height:1.6;color:rgba(255,246,228,0.8)">Keep it for your reference and share it with us on WhatsApp if needed. Your reservation ID <strong style="color:#ffc93c">{{ bookingId }}</strong> is all we ask for when our team calls.</div>
+    </div>
+
+    <div style="background:rgba(255,246,228,0.05);border:1px solid rgba(255,201,60,0.22);border-radius:20px;padding:18px;margin-bottom:24px">
+      <div style="font-weight:800;font-size:15px;margin-bottom:10px;color:#ffc93c">How your pass gets confirmed</div>
+      <div style="display:flex;flex-direction:column;gap:9px;font-size:13.5px;line-height:1.55;color:rgba(255,246,228,0.78)">
+        <div>1 · Our team calls you on {{ phoneOrDash }} to check your reservation.</div>
+        <div>2 · You pay ₹{{ subtotal }} by UPI on that call — this is what confirms your passes.</div>
+        <div>3 · We send your confirmed tickets on WhatsApp{{ emailSuffix }}.</div>
+        <div style="color:rgba(255,246,228,0.55)">Until payment is done, your passes stay reserved and can be released if the event fills up.</div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/919348087289?text=Hi%2C%20I%20have%20booked%20passes%20for%20Dhinchak%20Dandiya%202026.%20My%20booking%20ID%20is%20{{ bookingId }}." style="display:flex;align-items:center;justify-content:space-between;gap:14px;background:linear-gradient(100deg,#ffc93c,#ff8f2c);color:#2b0a30;border-radius:999px;padding:16px 22px;font-weight:800;font-size:16px;text-decoration:none;margin-bottom:16px">
+      <span>Share booking on WhatsApp</span>
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+
+    <div style="display:flex;flex-wrap:wrap;gap:18px;font-size:13.5px;font-weight:700">
+      <a href="tel:9348087289" style="text-decoration:none">Call 9348087289</a>
+      <button type="button" onClick="{{ goHome }}" style="background:transparent;border:none;color:rgba(255,246,228,0.6);font-family:'Outfit';font-weight:700;font-size:13.5px;cursor:pointer;padding:0">Back to event page</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ticketPrice&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:499,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:99,&quot;max&quot;:4999,&quot;step&quot;:50,&quot;unit&quot;:&quot;₹&quot;,&quot;section&quot;:&quot;Pricing&quot;},&quot;maxPerNight&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:20,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:1,&quot;max&quot;:50,&quot;section&quot;:&quot;Pricing&quot;},&quot;compact&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;topPad&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:0,&quot;tsType&quot;:&quot;number&quot;,&quot;min&quot;:0,&quot;max&quot;:80,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'home',
+    day1: 2, day2: 0,
+    firstName: '', lastName: '', phone: '', email: '',
+    errors: {},
+    bookingId: null,
+    policyTab: 'terms',
+    accepted: false,
+  };
+
+  inputStyle(hasError) {
+    return {
+      width: '100%', minHeight: 48, padding: '12px 16px', fontSize: 15,
+      fontFamily: 'Outfit, system-ui, sans-serif', color: '#fff6e4',
+      background: 'rgba(255,246,228,0.07)', borderRadius: 14,
+      outline: 'none', boxSizing: 'border-box',
+      border: '1px solid ' + (hasError ? '#ff8f5c' : 'rgba(255,201,60,0.3)'),
+    };
+  }
+
+  dayCard(active) {
+    return {
+      padding: '18px', borderRadius: 20,
+      background: active
+        ? 'linear-gradient(140deg, rgba(255,201,60,0.18), rgba(216,27,122,0.14))'
+        : 'rgba(255,246,228,0.05)',
+      border: '1px solid ' + (active ? 'rgba(255,201,60,0.6)' : 'rgba(255,201,60,0.2)'),
+    };
+  }
+
+  renderVals() {
+    const s = this.state;
+    const price = this.props.ticketPrice ?? 499;
+    const maxPer = this.props.maxPerNight ?? 20;
+    const totalQty = s.day1 + s.day2;
+
+    const stepBase = {
+      width: 46, height: 46, borderRadius: '50%', display: 'flex',
+      alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flex: 'none',
+    };
+
+    const frame = tilt => ({
+      width: 236, height: 176, flex: 'none', padding: 9, borderRadius: 20,
+      background: 'linear-gradient(140deg,#ffc93c,#e0a419 45%,#ff8f2c)',
+      boxShadow: '0 16px 36px rgba(0,0,0,0.45)',
+      transform: `rotate(${tilt}deg)`,
+      display: 'flex',
+    });
+
+    const yt = '';
+    if (!this._videoTimer) {
+      this._videoTimer = setTimeout(() => this.setState({ videoOn: true }), 3000);
+    }
+
+    const tab = active => ({
+      padding: '9px 18px', borderRadius: 999, cursor: 'pointer',
+      fontWeight: 700, fontSize: 13.5,
+      background: active ? 'linear-gradient(100deg,#ffc93c,#ff8f2c)' : 'transparent',
+      color: active ? '#2b0a30' : '#ffc93c',
+      border: '1px solid ' + (active ? 'transparent' : 'rgba(255,201,60,0.4)'),
+    });
+
+    const compact = !!this.props.compact;
+
+    return {
+      videoOn: !!s.videoOn,
+      videoIdle: !s.videoOn,
+      callIconWrapStyle: {
+        width: compact ? 20 : 32, height: compact ? 20 : 32, borderRadius: '50%',
+        background: compact ? 'transparent' : 'rgba(255,201,60,0.15)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center', flex: 'none',
+      },
+      igIconStyle: {
+        width: 38, height: 38, borderRadius: '50%', flex: 'none',
+        border: '1px solid rgba(255,201,60,0.4)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        textDecoration: 'none',
+      },
+      callPillStyle: {
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        gap: compact ? 0 : 10,
+        width: compact ? 38 : 'auto', height: compact ? 38 : 'auto',
+        padding: compact ? 0 : '6px 14px 6px 7px', borderRadius: 999,
+        border: '1px solid rgba(255,201,60,0.4)', flex: '0 0 auto',
+        textDecoration: 'none',
+      },
+      callLabelStyle: { display: compact ? 'none' : 'block' },
+      brandBreakStyle: { display: compact ? 'block' : 'inline' },
+      accepted: s.accepted,
+      toggleTerms: () => this.setState(st => ({ accepted: !st.accepted })),
+      termsBoxStyle: {
+        display: 'flex', gap: 12, alignItems: 'flex-start', cursor: 'pointer',
+        padding: 16, borderRadius: 18, marginBottom: 12,
+        background: s.accepted ? 'rgba(255,201,60,0.1)' : 'rgba(255,246,228,0.05)',
+        border: '1px solid ' + (s.errors.accepted ? '#ff8f5c' : s.accepted ? 'rgba(255,201,60,0.5)' : 'rgba(255,201,60,0.22)'),
+      },
+      checkboxStyle: {
+        width: 24, height: 24, flex: 'none', borderRadius: 7,
+        display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 1,
+        background: s.accepted ? 'linear-gradient(140deg,#ffc93c,#ff8f2c)' : 'transparent',
+        border: '1px solid ' + (s.accepted ? 'transparent' : 'rgba(255,201,60,0.5)'),
+      },
+      isPolicy: s.screen === 'policy',
+      isAbout: s.screen === 'about',
+      goAbout: () => this.setState({ screen: 'about' }),
+      showTerms: s.policyTab === 'terms',
+      showPrivacy: s.policyTab === 'privacy',
+      showRefund: s.policyTab === 'refund',
+      tabTermsStyle: tab(s.policyTab === 'terms'),
+      tabPrivacyStyle: tab(s.policyTab === 'privacy'),
+      tabRefundStyle: tab(s.policyTab === 'refund'),
+      goTerms: () => this.setState({ screen: 'policy', policyTab: 'terms' }),
+      goPrivacy: () => this.setState({ screen: 'policy', policyTab: 'privacy' }),
+      goRefund: () => this.setState({ screen: 'policy', policyTab: 'refund' }),
+
+      hasVideo: !!yt,
+      noVideo: !yt,
+      bgVideoSrc: yt
+        ? `https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&mute=1&loop=1&playlist=${yt}&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0&iv_load_policy=3`
+        : '',
+      videoSrc: yt
+        ? `https://www.youtube-nocookie.com/embed/${yt}?autoplay=1&mute=1&loop=1&playlist=${yt}&controls=0&modestbranding=1&playsinline=1&rel=0&showinfo=0`
+        : '',
+      frameA: frame(-1.6),
+      frameB: frame(1.6),
+      topPad: this.props.topPad ?? 0,
+      isHome: s.screen === 'home',
+      isBooking: s.screen === 'booking',
+      isConfirm: s.screen === 'confirm',
+      price,
+      bothDays: price * 2,
+      day1: s.day1, day2: s.day2,
+      hasDay1: s.day1 > 0, hasDay2: s.day2 > 0,
+      day1Total: s.day1 * price, day2Total: s.day2 * price,
+      totalQty, subtotal: totalQty * price,
+
+      firstName: s.firstName, lastName: s.lastName, phone: s.phone, email: s.email,
+      errors: s.errors,
+      bookingId: s.bookingId || '',
+      nameOrGuest: [s.firstName, s.lastName].filter(Boolean).join(' ') || 'Guest',
+      phoneOrDash: s.phone || 'your number',
+      emailOrPlaceholder: s.email || 'WhatsApp',
+      emailSuffix: s.email.trim() ? ' and to ' + s.email.trim() : '',
+
+      firstNameInputStyle: this.inputStyle(s.errors.firstName),
+      lastNameInputStyle: this.inputStyle(s.errors.lastName),
+      phoneInputStyle: this.inputStyle(s.errors.phone),
+      emailInputStyle: this.inputStyle(s.errors.email),
+      day1CardStyle: this.dayCard(s.day1 > 0),
+      day2CardStyle: this.dayCard(s.day2 > 0),
+      stepBtnStyle: { ...stepBase, border: '1px solid rgba(255,201,60,0.45)', background: 'transparent', color: '#ffc93c' },
+      stepBtnPrimaryStyle: { ...stepBase, border: 'none', background: 'linear-gradient(140deg,#ffc93c,#ff8f2c)', color: '#2b0a30' },
+
+      onFirstName: e => this.setState({ firstName: e.target.value }),
+      onLastName: e => this.setState({ lastName: e.target.value }),
+      onPhone: e => this.setState({ phone: e.target.value }),
+      onEmail: e => this.setState({ email: e.target.value }),
+      incDay1: () => this.setState(st => ({ day1: Math.min(maxPer, st.day1 + 1) })),
+      decDay1: () => this.setState(st => ({ day1: Math.max(0, st.day1 - 1) })),
+      incDay2: () => this.setState(st => ({ day2: Math.min(maxPer, st.day2 + 1) })),
+      decDay2: () => this.setState(st => ({ day2: Math.max(0, st.day2 - 1) })),
+
+      goBooking: () => this.setState({ screen: 'booking' }),
+      goHome: () => this.setState({ screen: 'home' }),
+
+      submitBooking: () => {
+        const errs = {};
+        if (s.day1 + s.day2 < 1) errs.qty = true;
+        if (!s.firstName.trim()) errs.firstName = true;
+        if (!s.lastName.trim()) errs.lastName = true;
+        if (!/^\d{10}$/.test(s.phone.replace(/\D/g, ''))) errs.phone = true;
+        if (s.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim())) errs.email = true;
+        if (!s.accepted) errs.accepted = true;
+        if (Object.keys(errs).length) { this.setState({ errors: errs }); return; }
+        this.setState({ errors: {}, bookingId: 'DD' + Math.floor(100000 + Math.random() * 900000), screen: 'confirm' });
+      },
+    };
+  }
+}
+</script>
+</body>
+</html>
