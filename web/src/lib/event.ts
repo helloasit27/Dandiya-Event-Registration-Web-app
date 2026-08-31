@@ -58,8 +58,13 @@ const formatAmount = (n: number) => n.toLocaleString("en-IN");
 
 /**
  * The message the customer sends the team from the confirmation screen.
- * WhatsApp renders *text* as bold and honours the blank lines between blocks,
- * so the layout here is the layout they see.
+ *
+ * Line breaks are sent as %0A, which is what WhatsApp documents and what its
+ * phone apps honour. WhatsApp Web/Desktop has a long-standing habit of
+ * flattening them into spaces, and we cannot control that from a link — so the
+ * message is built to survive it: every field carries its own bold label, and
+ * there are no blank lines whose loss would merge two blocks into one run of
+ * text. Collapsed, it still reads as labelled fields rather than a paragraph.
  *
  * Only nights actually booked get a line — a "18 October: 0 tickets" row would
  * just be noise for whoever is working the calls.
@@ -80,27 +85,19 @@ export const whatsappShareUrl = (booking: {
   const ticketLines = NIGHTS.filter((night) => booking[night.id] > 0).map(
     (night) => {
       const qty = booking[night.id];
-      return `${night.longDate}: ${qty} ${qty === 1 ? "ticket" : "tickets"}`;
+      return `*${night.longDate}:* ${qty} ${qty === 1 ? "ticket" : "tickets"}`;
     }
   );
 
   const message = [
-    `Hi, I have reserved tickets for ${EVENT.name}. Here are my reservation details. Waiting for confirmation from your side.`,
-    ``,
-    `🎟️ *Reservation Details*`,
-    ``,
+    `Hi, I have reserved tickets for ${EVENT.name}. Waiting for confirmation from your side.`,
     `*Booking ID:* ${booking.bookingId}`,
     `*Name:* ${booking.firstName} ${booking.lastName}`,
     `*Mobile:* ${booking.phone}`,
-    ``,
-    `📅 *Tickets*`,
     ...ticketLines,
-    ``,
     `*Total Tickets:* ${booking.totalQty}`,
     `*Total Due:* ₹${formatAmount(booking.amountDue)}`,
-    ``,
     `*Status:* Reservation Submitted — Awaiting Confirmation`,
-    ``,
     `Please confirm my reservation. Thank you!`,
   ].join("\n");
 
