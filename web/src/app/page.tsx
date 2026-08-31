@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HighlightsVideo from "@/components/HighlightsVideo";
+import FloatingReserveBar from "@/components/FloatingReserveBar";
 import {
   ArrowRight,
   Calendar,
@@ -186,72 +187,75 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The night ------------------------------------------------------ */}
-      <section className={styles.night}>
-        <div className="eyebrow">The night</div>
-        <h2 className="h2">Two evenings of non-stop garba</h2>
-        <p className={styles.lede}>
-          A live dhol squad, a DJ playing back-to-back Navratri hits, mascots
-          roaming the floor, limited gift hampers to win, and food and shopping
-          stalls all around. Come dressed traditional, bring your crew, and dance
-          till the lights come up.
-        </p>
-
-        <div className={styles.highlightGrid}>
-          {HIGHLIGHTS.map((h) => (
-            <div className={styles.highlight} key={h.title}>
-              <HighlightIcon
-                name={h.icon}
-                size={22}
-                stroke="var(--gold)"
-                className={styles.highlightIcon}
-              />
-              <div className={styles.highlightTitle}>{h.title}</div>
-              <div className={styles.highlightBody}>{h.body}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.tags}>
-          {TAGS.map((t) => (
-            <span className="tag" key={t}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Gallery -------------------------------------------------------- */}
-      <section className={styles.gallery}>
-        <div className={styles.galleryHead}>
-          <div className="eyebrow">Last year</div>
-          <h2 className="h2" style={{ marginBottom: 0 }}>
-            Moments from the floor
-          </h2>
-        </div>
-        <div className={styles.galleryTrack}>
-          {[0, 1].map((copy) => (
-            <div className={styles.galleryRun} key={copy} aria-hidden={copy === 1}>
-              {GALLERY.map((photo) => (
-                <div className={styles.frame} key={`${copy}-${photo.src}`}>
-                  <Image
-                    src={photo.src}
-                    alt={copy === 1 ? "" : photo.alt}
-                    width={218}
-                    height={158}
-                    className={styles.frameImg}
-                    style={{ objectPosition: photo.objectPosition }}
-                  />
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Venue → footer. The sticky bar lives at the end of this container,
-          so it only appears once the reader is past the venue section. */}
+      {/* The night → footer. The reserve bar is this container's last child, so
+          it pins to the bottom through this stretch and scrolls away at the end
+          of the page. Exactly when it starts showing is handled inside
+          FloatingReserveBar — sticky alone engages up to a screen too early. */}
       <div className={styles.tail}>
+        {/* The night ------------------------------------------------------ */}
+        <section className={styles.night}>
+          {/* Marks where the floating reserve bar starts showing. */}
+          <div id="night-sentinel" aria-hidden="true" />
+          <div className="eyebrow">The night</div>
+          <h2 className="h2">Two evenings of non-stop garba</h2>
+          <p className={styles.lede}>
+            A live dhol squad, a DJ playing back-to-back Navratri hits, mascots
+            roaming the floor, limited gift hampers to win, and food and shopping
+            stalls all around. Come dressed traditional, bring your crew, and dance
+            till the lights come up.
+          </p>
+
+          <div className={styles.highlightGrid}>
+            {HIGHLIGHTS.map((h) => (
+              <div className={styles.highlight} key={h.title}>
+                <HighlightIcon
+                  name={h.icon}
+                  size={22}
+                  stroke="var(--gold)"
+                  className={styles.highlightIcon}
+                />
+                <div className={styles.highlightTitle}>{h.title}</div>
+                <div className={styles.highlightBody}>{h.body}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.tags}>
+            {TAGS.map((t) => (
+              <span className="tag" key={t}>
+                {t}
+              </span>
+            ))}
+          </div>
+        </section>
+        {/* Gallery -------------------------------------------------------- */}
+        <section className={styles.gallery}>
+          <div className={styles.galleryHead}>
+            <div className="eyebrow">Last year</div>
+            <h2 className="h2" style={{ marginBottom: 0 }}>
+              Moments from the floor
+            </h2>
+          </div>
+          <div className={styles.galleryTrack}>
+            {[0, 1].map((copy) => (
+              <div className={styles.galleryRun} key={copy} aria-hidden={copy === 1}>
+                {GALLERY.map((photo) => (
+                  <div className={styles.frame} key={`${copy}-${photo.src}`}>
+                    <Image
+                      src={photo.src}
+                      alt={copy === 1 ? "" : photo.alt}
+                      width={218}
+                      height={158}
+                      className={styles.frameImg}
+                      style={{ objectPosition: photo.objectPosition }}
+                    />
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section className={styles.venue}>
           <div className="eyebrow">The venue</div>
           <h2 className="h2">{EVENT.venue}</h2>
@@ -295,17 +299,7 @@ export default function HomePage() {
 
         <SiteFooter />
 
-        <div className={styles.stickyBar}>
-          <div className={styles.stickyInner}>
-            <Link href="/book" className={`cta ${styles.stickyCta}`}>
-              <span>
-                Reserve Pass Now · ₹{TICKET_PRICE}
-                <span className="cta__sub">Food included · T&amp;C apply</span>
-              </span>
-              <ArrowRight size={19} />
-            </Link>
-          </div>
-        </div>
+        <FloatingReserveBar />
       </div>
     </>
   );

@@ -519,9 +519,9 @@
 
 /* Venue + FAQ ----------------------------------------------------------- */
 .tail {
-  /* Everything from the venue down, including the footer. The sticky
+  /* Everything from "The night" down, including the footer. The sticky
      reserve bar is this container's last child, so it does not exist
-     above the venue and pins to the bottom from here on. */
+     above this point and pins to the bottom from here on. */
   position: relative;
 }
 
@@ -607,6 +607,24 @@
   background: rgba(30, 6, 33, 0.94);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--line-strong);
+}
+
+/* Hidden until the reader is past the top of "The night". Translated rather
+   than display:none so it slides in, and so its height never reflows the page. */
+.stickyBarHidden {
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.stickyBar {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stickyBar {
+    transition: none;
+  }
 }
 
 .stickyInner {
