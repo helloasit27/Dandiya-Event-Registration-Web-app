@@ -159,7 +159,7 @@ export default async function ConfirmationPage({ params, searchParams }: Props) 
         </div>
 
         <a
-          href={whatsappShareUrl(booking.bookingId)}
+          href={whatsappShareUrl(booking)}
           className={`cta ${styles.whatsapp}`}
           target="_blank"
           rel="noopener noreferrer"

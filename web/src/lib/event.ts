@@ -14,6 +14,7 @@ export const NIGHTS = [
     label: "Night 1 · Sat 17 Oct",
     shortDate: "Sat 17 Oct",
     summaryLabel: "Saptami, 17 Oct",
+    longDate: "17 October",
   },
   {
     id: "day2" as const,
@@ -21,6 +22,7 @@ export const NIGHTS = [
     label: "Night 2 · Sun 18 Oct",
     shortDate: "Sun 18 Oct",
     summaryLabel: "Asthami, 18 Oct",
+    longDate: "18 October",
   },
 ];
 
@@ -51,10 +53,61 @@ export const ORG = {
   supportHours: "10:00 AM–10:00 PM, all seven days",
 };
 
-export const whatsappShareUrl = (bookingId: string) =>
-  `https://wa.me/91${ORG.phonePrimary}?text=${encodeURIComponent(
-    `Hi, I have reserved passes for ${EVENT.name}. My booking ID is ${bookingId}.`
+/** Indian digit grouping, so ₹2495 reads as ₹2,495. */
+const formatAmount = (n: number) => n.toLocaleString("en-IN");
+
+/**
+ * The message the customer sends the team from the confirmation screen.
+ * WhatsApp renders *text* as bold and honours the blank lines between blocks,
+ * so the layout here is the layout they see.
+ *
+ * Only nights actually booked get a line — a "18 October: 0 tickets" row would
+ * just be noise for whoever is working the calls.
+ *
+ * Typed structurally rather than as PublicBooking on purpose: booking.ts
+ * already imports from this file, and importing back would be a cycle.
+ */
+export const whatsappShareUrl = (booking: {
+  bookingId: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  day1: number;
+  day2: number;
+  totalQty: number;
+  amountDue: number;
+}) => {
+  const ticketLines = NIGHTS.filter((night) => booking[night.id] > 0).map(
+    (night) => {
+      const qty = booking[night.id];
+      return `${night.longDate}: ${qty} ${qty === 1 ? "ticket" : "tickets"}`;
+    }
+  );
+
+  const message = [
+    `Hi, I have reserved tickets for ${EVENT.name}. Here are my reservation details. Waiting for confirmation from your side.`,
+    ``,
+    `🎟️ *Reservation Details*`,
+    ``,
+    `*Booking ID:* ${booking.bookingId}`,
+    `*Name:* ${booking.firstName} ${booking.lastName}`,
+    `*Mobile:* ${booking.phone}`,
+    ``,
+    `📅 *Tickets*`,
+    ...ticketLines,
+    ``,
+    `*Total Tickets:* ${booking.totalQty}`,
+    `*Total Due:* ₹${formatAmount(booking.amountDue)}`,
+    ``,
+    `*Status:* Reservation Submitted — Awaiting Confirmation`,
+    ``,
+    `Please confirm my reservation. Thank you!`,
+  ].join("\n");
+
+  return `https://wa.me/91${ORG.phonePrimary}?text=${encodeURIComponent(
+    message
   )}`;
+};
 
 export const GALLERY = Array.from({ length: 10 }, (_, i) => ({
   src: `/gallery/gal-${i + 1}.webp`,
