@@ -1,3 +1,36 @@
+/* Motion ---------------------------------------------------------------- */
+/* Declared here, not in globals.css, and it has to stay that way: CSS Modules
+   rewrites `animation-name` in this file to a hashed name, so it can only
+   resolve keyframes declared in the same module. Move these out and every
+   animation below silently stops running. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes tick {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.08);
+  }
+}
+
 /* Hero ------------------------------------------------------------------ */
 .hero {
   position: relative;
@@ -181,7 +214,10 @@
 .tickerTrack {
   display: flex;
   width: max-content;
-  animation: tick 26s linear infinite;
+  /* Rolls left to right. `tick` runs 0 → -50%, so playing it in reverse moves
+     the track rightwards; the run is duplicated, so -50% and 0 look identical
+     and the loop stays seamless. */
+  animation: tick 26s linear infinite reverse;
 }
 
 .tickerRun {

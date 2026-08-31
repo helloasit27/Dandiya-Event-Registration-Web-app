@@ -137,41 +137,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The night ------------------------------------------------------ */}
-      <section className={styles.night}>
-        <div className="eyebrow">The night</div>
-        <h2 className="h2">Two evenings of non-stop garba</h2>
-        <p className={styles.lede}>
-          A live dhol squad, a DJ playing back-to-back Navratri hits, mascots
-          roaming the floor, limited gift hampers to win, and food and shopping
-          stalls all around. Come dressed traditional, bring your crew, and dance
-          till the lights come up.
-        </p>
-
-        <div className={styles.highlightGrid}>
-          {HIGHLIGHTS.map((h) => (
-            <div className={styles.highlight} key={h.title}>
-              <HighlightIcon
-                name={h.icon}
-                size={22}
-                stroke="var(--gold)"
-                className={styles.highlightIcon}
-              />
-              <div className={styles.highlightTitle}>{h.title}</div>
-              <div className={styles.highlightBody}>{h.body}</div>
-            </div>
-          ))}
-        </div>
-
-        <div className={styles.tags}>
-          {TAGS.map((t) => (
-            <span className="tag" key={t}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </section>
-
       {/* Passes --------------------------------------------------------- */}
       <section className={styles.passes}>
         <div className={styles.passesInner}>
@@ -218,6 +183,41 @@ export default function HomePage() {
             <span>Reserve Pass · food included</span>
             <ArrowRight size={20} />
           </Link>
+        </div>
+      </section>
+
+      {/* The night ------------------------------------------------------ */}
+      <section className={styles.night}>
+        <div className="eyebrow">The night</div>
+        <h2 className="h2">Two evenings of non-stop garba</h2>
+        <p className={styles.lede}>
+          A live dhol squad, a DJ playing back-to-back Navratri hits, mascots
+          roaming the floor, limited gift hampers to win, and food and shopping
+          stalls all around. Come dressed traditional, bring your crew, and dance
+          till the lights come up.
+        </p>
+
+        <div className={styles.highlightGrid}>
+          {HIGHLIGHTS.map((h) => (
+            <div className={styles.highlight} key={h.title}>
+              <HighlightIcon
+                name={h.icon}
+                size={22}
+                stroke="var(--gold)"
+                className={styles.highlightIcon}
+              />
+              <div className={styles.highlightTitle}>{h.title}</div>
+              <div className={styles.highlightBody}>{h.body}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className={styles.tags}>
+          {TAGS.map((t) => (
+            <span className="tag" key={t}>
+              {t}
+            </span>
+          ))}
         </div>
       </section>
 
