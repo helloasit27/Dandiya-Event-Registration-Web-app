@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
-import { TICKET_PRICE } from "@/lib/event";
+import { CTA_LABEL, TICKET_PRICE } from "@/lib/event";
 import styles from "../app/home.module.css";
 
 /**
@@ -58,7 +58,7 @@ export default function FloatingReserveBar() {
           tabIndex={shown ? undefined : -1}
         >
           <span>
-            Book Now, Pay Later
+            {CTA_LABEL}
             <span className="cta__sub">
               ₹{TICKET_PRICE} · Food included · T&amp;C apply
             </span>

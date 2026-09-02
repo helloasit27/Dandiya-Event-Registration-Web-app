@@ -5,6 +5,16 @@
  */
 
 export const TICKET_PRICE = 499;
+
+/**
+ * The label on every call-to-action button.
+ *
+ * The spaces inside "BOOK NOW" and "PAY LATER" are non-breaking, so when the
+ * button is too narrow for one line — 360px phones, where all-caps runs wide —
+ * it breaks between the two halves rather than mid-phrase. Without them it
+ * wrapped as "BOOK NOW PAY / LATER".
+ */
+export const CTA_LABEL = "BOOK\u00A0NOW PAY\u00A0LATER";
 export const MAX_PER_NIGHT = 20;
 
 export const NIGHTS = [

@@ -12,7 +12,12 @@ import {
   Minus,
   Plus,
 } from "@/components/Icons";
-import { MAX_PER_NIGHT, NIGHTS, TICKET_PRICE } from "@/lib/event";
+import {
+  CTA_LABEL,
+  MAX_PER_NIGHT,
+  NIGHTS,
+  TICKET_PRICE,
+} from "@/lib/event";
 import styles from "./book.module.css";
 
 type Errors = Partial<
@@ -354,7 +359,7 @@ export default function BookingForm() {
               disabled={submitting}
             >
               <span>
-                {submitting ? "Booking…" : `Book Now, Pay Later · ₹${subtotal}`}
+                {submitting ? "Booking…" : `${CTA_LABEL}\u00A0·\u00A0₹${subtotal}`}
               </span>
               <ArrowRight size={19} />
             </button>

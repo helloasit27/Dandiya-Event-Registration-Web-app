@@ -14,6 +14,7 @@ import {
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import {
+  CTA_LABEL,
   EVENT,
   FAQS,
   GALLERY,
@@ -98,7 +99,7 @@ export default function HomePage() {
 
             <Link href="/book" className={`cta ${styles.heroCta}`}>
               <span>
-                Book Now, Pay Later
+                {CTA_LABEL}
                 <span className="cta__sub">
                   ₹{TICKET_PRICE} · Food included · T&amp;C apply
                 </span>
@@ -185,7 +186,7 @@ export default function HomePage() {
           <Link href="/book" className={`cta ${styles.passesCta}`}>
             {/* No "food included" here — both pass cards and the notes above
                 already say it, and appending it wrapped the button at 360px. */}
-            <span>Book Now, Pay Later</span>
+            <span>{CTA_LABEL}</span>
             <ArrowRight size={20} />
           </Link>
         </div>

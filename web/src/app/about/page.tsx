@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft } from "@/components/Icons";
-import { EVENT, ORG } from "@/lib/event";
+import {
+  CTA_LABEL,
+  EVENT,
+  ORG,
+} from "@/lib/event";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -94,7 +98,7 @@ export default function AboutPage() {
         </div>
 
         <Link href="/book" className={`cta ${styles.cta}`}>
-          <span>Book Now, Pay Later</span>
+          <span>{CTA_LABEL}</span>
         </Link>
       </div>
     </div>
