@@ -58,8 +58,10 @@ export default function FloatingReserveBar() {
           tabIndex={shown ? undefined : -1}
         >
           <span>
-            Reserve Pass Now · ₹{TICKET_PRICE}
-            <span className="cta__sub">Food included · T&amp;C apply</span>
+            Book Now, Pay Later
+            <span className="cta__sub">
+              ₹{TICKET_PRICE} · Food included · T&amp;C apply
+            </span>
           </span>
           <ArrowRight size={19} />
         </Link>

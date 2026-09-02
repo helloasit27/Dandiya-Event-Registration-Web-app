@@ -94,7 +94,7 @@ export default function AboutPage() {
         </div>
 
         <Link href="/book" className={`cta ${styles.cta}`}>
-          <span>Reserve passes for {EVENT.name.replace(" 2026", "")}</span>
+          <span>Book Now, Pay Later</span>
         </Link>
       </div>
     </div>

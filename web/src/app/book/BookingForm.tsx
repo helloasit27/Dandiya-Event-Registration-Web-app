@@ -354,7 +354,7 @@ export default function BookingForm() {
               disabled={submitting}
             >
               <span>
-                {submitting ? "Reserving…" : `Reserve Pass Now · ₹${subtotal}`}
+                {submitting ? "Booking…" : `Book Now, Pay Later · ₹${subtotal}`}
               </span>
               <ArrowRight size={19} />
             </button>

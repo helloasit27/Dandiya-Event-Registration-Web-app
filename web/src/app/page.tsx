@@ -98,8 +98,10 @@ export default function HomePage() {
 
             <Link href="/book" className={`cta ${styles.heroCta}`}>
               <span>
-                Reserve Pass Now · ₹{TICKET_PRICE}
-                <span className="cta__sub">Food included · T&amp;C apply</span>
+                Book Now, Pay Later
+                <span className="cta__sub">
+                  ₹{TICKET_PRICE} · Food included · T&amp;C apply
+                </span>
               </span>
               <ArrowRight size={20} />
             </Link>
@@ -181,7 +183,9 @@ export default function HomePage() {
           </div>
 
           <Link href="/book" className={`cta ${styles.passesCta}`}>
-            <span>Reserve Pass · food included</span>
+            {/* No "food included" here — both pass cards and the notes above
+                already say it, and appending it wrapped the button at 360px. */}
+            <span>Book Now, Pay Later</span>
             <ArrowRight size={20} />
           </Link>
         </div>
