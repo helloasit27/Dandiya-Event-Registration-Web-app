@@ -2,6 +2,7 @@ import { timingSafeEqual } from "node:crypto";
 import { NextResponse } from "next/server";
 import { appendBookingRow } from "@/lib/sheets";
 import { writeHeaderRow } from "@/lib/sheetsAdmin";
+import { initStatsTab } from "@/lib/statsSheet";
 import { getBooking, markUnsynced, takeUnsynced } from "@/lib/store";
 
 export const runtime = "nodejs";
@@ -10,7 +11,8 @@ export const dynamic = "force-dynamic";
 /**
  * Operator endpoint, guarded by ADMIN_TOKEN:
  *
- *   ?action=init    write the sheet's header row (run once at setup)
+ *   ?action=init        write the bookings header row (run once at setup)
+ *   ?action=stats-init  create the "Daily stats" tab and its header (once)
  *   ?action=replay  push any bookings that missed the Sheets mirror
  *
  * `replay` is the drain for the queue that a Sheets outage fills. Point a cron
@@ -41,6 +43,11 @@ export async function POST(request: Request) {
     if (action === "init") {
       await writeHeaderRow();
       return NextResponse.json({ ok: true, action: "init" });
+    }
+
+    if (action === "stats-init") {
+      await initStatsTab();
+      return NextResponse.json({ ok: true, action: "stats-init" });
     }
 
     if (action === "replay") {

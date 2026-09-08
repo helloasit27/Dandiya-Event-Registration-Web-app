@@ -9,6 +9,7 @@ import {
 import { appendBookingRow } from "@/lib/sheets";
 import { claimBookingId, markUnsynced, saveBooking } from "@/lib/store";
 import { checkBookingThrottle } from "@/lib/throttle";
+import { recordBooking } from "@/lib/stats";
 
 // google-auth-library signs a JWT with node:crypto, so this must not run on edge.
 export const runtime = "nodejs";
@@ -86,6 +87,10 @@ export async function POST(request: Request) {
     };
 
     await saveBooking(input.requestId, booking);
+
+    // Counted for the daily rollup. Swallowed on failure — a statistic is
+    // never worth losing a reservation over.
+    await recordBooking(booking.totalQty, booking.amountDue).catch(() => {});
 
     // The reservation is already durable at this point. Sheets is a mirror for
     // the phone team, so a failure there must not fail the customer's booking —

@@ -47,6 +47,17 @@ export function sheetsConfigured(): boolean {
   return Boolean(getClient() && process.env.GOOGLE_SHEET_ID);
 }
 
+/**
+ * A Google access token, or null when Sheets is not configured. Shared so the
+ * stats tab reuses the same cached JWT client rather than signing its own.
+ */
+export async function getSheetsToken(): Promise<string | null> {
+  const auth = getClient();
+  if (!auth) return null;
+  const { token } = await auth.getAccessToken();
+  return token ?? null;
+}
+
 function istTimestamp(iso: string): string {
   return new Date(iso).toLocaleString("en-IN", {
     timeZone: "Asia/Kolkata",

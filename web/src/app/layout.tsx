@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Outfit, Yatra_One } from "next/font/google";
 import { EVENT, ORG } from "@/lib/event";
 import "./globals.css";
+import PageView from "@/components/PageView";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -42,7 +43,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${outfit.variable} ${yatra.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <PageView />
+      </body>
     </html>
   );
 }

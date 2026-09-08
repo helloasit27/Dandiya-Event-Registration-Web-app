@@ -1,0 +1,11 @@
+# Nothing here should ever be committed. web/.gitignore covers the app itself;
+# this catches credentials dropped at the repo root by mistake.
+.env
+.env.*
+!.env.example
+*.pem
+*service-account*.json
+*credentials*.json
+
+.DS_Store
+node_modules/
