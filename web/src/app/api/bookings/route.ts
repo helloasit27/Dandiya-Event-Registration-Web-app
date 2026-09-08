@@ -8,12 +8,29 @@ import {
 } from "@/lib/booking";
 import { appendBookingRow } from "@/lib/sheets";
 import { claimBookingId, markUnsynced, saveBooking } from "@/lib/store";
+import { checkBookingThrottle } from "@/lib/throttle";
 
 // google-auth-library signs a JWT with node:crypto, so this must not run on edge.
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
+  // Checked before anything is parsed or allocated, so a refused request
+  // never consumes a booking number or touches the Sheet.
+  const throttle = await checkBookingThrottle(request);
+  if (!throttle.ok) {
+    return NextResponse.json(
+      {
+        error: "rate_limited",
+        message:
+          throttle.scope === "global"
+            ? "We are handling a lot of bookings right now. Please try again in a few minutes, or call us and we will book it for you."
+            : "That is a lot of attempts from this connection. Please wait a few minutes, or call us and we will book it for you.",
+      },
+      { status: 429, headers: { "Retry-After": String(throttle.retryAfter) } }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();

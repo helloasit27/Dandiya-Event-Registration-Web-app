@@ -19,7 +19,7 @@ const PENDING = "__pending__";
 let redis: Redis | null = null;
 let memoryFallbackWarned = false;
 
-function getRedis(): Redis | null {
+export function getRedis(): Redis | null {
   if (redis) return redis;
   const url = process.env.UPSTASH_REDIS_REST_URL;
   const token = process.env.UPSTASH_REDIS_REST_TOKEN;

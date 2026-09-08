@@ -108,6 +108,12 @@ export default function BookingForm() {
           }
           setErrors(serverErrors);
           setSubmitError("Please check the highlighted details and try again.");
+        } else if (res.status === 429) {
+          // The server explains whether it is this connection or overall load.
+          setSubmitError(
+            payload?.message ??
+              "Too many attempts just now. Please wait a few minutes, or call us on 9348087289."
+          );
         } else {
           setSubmitError(
             "We could not reserve your passes just now. Please try again, or call us on 9348087289."
