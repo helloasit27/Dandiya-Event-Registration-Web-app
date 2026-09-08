@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import HighlightsVideo from "@/components/HighlightsVideo";
 import FloatingReserveBar from "@/components/FloatingReserveBar";
 import {
   ArrowRight,
@@ -132,14 +131,6 @@ export default function HomePage() {
         Attractions: {TICKER.join(", ")}.
       </p>
 
-      {/* Watch ---------------------------------------------------------- */}
-      <section className={styles.watch}>
-        <div className={styles.watchInner}>
-          <div className="eyebrow">Watch</div>
-          <h2 className="h2">Last year in 60 seconds</h2>
-          <HighlightsVideo />
-        </div>
-      </section>
 
       {/* Passes --------------------------------------------------------- */}
       <section className={styles.passes}>

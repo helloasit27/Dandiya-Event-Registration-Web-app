@@ -126,12 +126,6 @@ export const ExternalLink = (p: IconProps) => (
   </Svg>
 );
 
-export const Play = ({ size = 24, fill = "#2b0a30" }: { size?: number; fill?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill={fill} aria-hidden="true">
-    <path d="M8 5v14l11-7z" />
-  </svg>
-);
-
 /* Highlight-card icons, keyed by the `icon` field in the event data. */
 export const HighlightIcon = ({ name, ...p }: IconProps & { name: string }) => {
   switch (name) {
