@@ -106,7 +106,7 @@ export default function HomePage() {
               <ArrowRight size={20} />
             </Link>
             <div className={styles.heroCtaNote}>
-              Reserve free — pay when our team calls you
+              Reserve free — pay &amp; collect your pass at Plutone Mall
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ import {
   CTA_LABEL,
   MAX_PER_NIGHT,
   NIGHTS,
+  PICKUP,
   TICKET_PRICE,
 } from "@/lib/event";
 import styles from "./book.module.css";
@@ -229,7 +230,8 @@ export default function BookingForm() {
           })}
         </div>
         <div className={styles.hint}>
-          Only Asthami, Sun 18 Oct, has passes left. Saptami is sold out.
+          Only Asthami, Sun 18 Oct, has passes left. Reserve now, then pay
+          and collect your pass at {PICKUP.place}.
         </div>
         {errors.qty && (
           <div className={styles.qtyError} data-invalid="true" role="alert">
@@ -306,8 +308,7 @@ export default function BookingForm() {
 
         <div className={styles.emailField}>
           <label className={styles.label} htmlFor="email">
-            Email <span className={styles.optional}>(optional)</span> — we send
-            your pass here
+            Email <span className={styles.optional}>(optional)</span>
           </label>
           <input
             id="email"
@@ -324,9 +325,6 @@ export default function BookingForm() {
           {errors.email && (
             <div className="field-error">Please check the email address</div>
           )}
-          <div className={styles.emailNote}>
-            No email? No problem — we will send your pass on WhatsApp instead.
-          </div>
         </div>
 
         {/* Terms ---------------------------------------------------- */}
@@ -403,8 +401,8 @@ export default function BookingForm() {
             </div>
 
             <div className={styles.submitNote}>
-              Nothing to pay now. Your passes are only confirmed once payment is
-              done on our call.
+              Nothing to pay now. Pay and collect your passes at{" "}
+              {PICKUP.place} with your reservation ID.
             </div>
 
             {submitError && (
