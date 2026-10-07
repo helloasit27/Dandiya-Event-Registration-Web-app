@@ -106,7 +106,8 @@ export default function HomePage() {
               <ArrowRight size={20} />
             </Link>
             <div className={styles.heroCtaNote}>
-              Reserve free — pay when our team calls you
+              17 Oct sold out · Reserve for 18 Oct — pay &amp; collect at
+              Plutone Mall
             </div>
           </div>
         </div>
@@ -136,30 +137,41 @@ export default function HomePage() {
       <section className={styles.passes}>
         <div className={styles.passesInner}>
           <div className="eyebrow">Passes</div>
-          <h2 className="h2">One price, both nights open</h2>
+          <h2 className="h2">17 Oct sold out — 18 Oct open</h2>
 
           <div className={styles.passGrid}>
             {NIGHTS.map((n) => (
-              <div className={styles.passCard} key={n.id}>
+              <div
+                className={`${styles.passCard} ${
+                  n.soldOut ? styles.passCardSoldOut : ""
+                }`}
+                key={n.id}
+              >
                 <div className={styles.passLabel}>{n.label}</div>
                 <div className={styles.passName}>{n.name}</div>
-                <div className={styles.passPriceRow}>
-                  <span className={styles.passPrice}>₹{TICKET_PRICE}</span>
-                  <span className={styles.passPer}>per person</span>
-                </div>
-                <div className={styles.foodChip}>
-                  <Check size={12} />
-                  Food included
-                </div>
-                <div className={styles.tnc}>T&amp;C apply</div>
+                {n.soldOut ? (
+                  <div className={styles.soldOutChip}>Sold out</div>
+                ) : (
+                  <>
+                    <div className={styles.passPriceRow}>
+                      <span className={styles.passPrice}>₹{TICKET_PRICE}</span>
+                      <span className={styles.passPer}>per person</span>
+                    </div>
+                    <div className={styles.foodChip}>
+                      <Check size={12} />
+                      Food included
+                    </div>
+                    <div className={styles.tnc}>T&amp;C apply</div>
+                  </>
+                )}
               </div>
             ))}
           </div>
 
           <div className={styles.passNotes}>
             {[
-              "Choose one night or both — quantities set separately.",
-              `Both days together: ₹${TICKET_PRICE * 2} per person.`,
+              "17 October is sold out — thank you, Rourkela!",
+              "Reserve 18 October here, then pay & collect your pass at Plutone Mall.",
               "Food is included with every valid ticket.",
             ].map((note) => (
               <div className={styles.passNote} key={note}>

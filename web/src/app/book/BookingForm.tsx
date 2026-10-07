@@ -16,6 +16,7 @@ import {
   CTA_LABEL,
   MAX_PER_NIGHT,
   NIGHTS,
+  PICKUP,
   TICKET_PRICE,
 } from "@/lib/event";
 import styles from "./book.module.css";
@@ -27,7 +28,7 @@ type Errors = Partial<
 export default function BookingForm() {
   const router = useRouter();
 
-  const [qty, setQty] = useState({ day1: 2, day2: 0 });
+  const [qty, setQty] = useState({ day1: 0, day2: 2 });
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -155,6 +156,22 @@ export default function BookingForm() {
         <div className={styles.nights}>
           {NIGHTS.map((night) => {
             const count = qty[night.id];
+            if (night.soldOut) {
+              return (
+                <div
+                  key={night.id}
+                  className={`${styles.nightCard} ${styles.nightCardSoldOut}`}
+                >
+                  <div className={styles.nightRow}>
+                    <div className={styles.nightMeta}>
+                      <div className={styles.nightName}>{night.name}</div>
+                      <div className={styles.nightDate}>{night.shortDate}</div>
+                    </div>
+                    <div className={styles.soldOutChip}>Sold out</div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <div
                 key={night.id}
@@ -202,7 +219,7 @@ export default function BookingForm() {
           })}
         </div>
         <div className={styles.hint}>
-          Coming both nights? Add passes to both — it stays one booking.
+          {PICKUP.short}.
         </div>
         {errors.qty && (
           <div className={styles.qtyError} data-invalid="true" role="alert">
@@ -279,8 +296,7 @@ export default function BookingForm() {
 
         <div className={styles.emailField}>
           <label className={styles.label} htmlFor="email">
-            Email <span className={styles.optional}>(optional)</span> — we send
-            your pass here
+            Email <span className={styles.optional}>(optional)</span>
           </label>
           <input
             id="email"
@@ -297,9 +313,6 @@ export default function BookingForm() {
           {errors.email && (
             <div className="field-error">Please check the email address</div>
           )}
-          <div className={styles.emailNote}>
-            No email? No problem — we will send your pass on WhatsApp instead.
-          </div>
         </div>
 
         {/* Terms ---------------------------------------------------- */}
@@ -376,8 +389,8 @@ export default function BookingForm() {
             </div>
 
             <div className={styles.submitNote}>
-              Nothing to pay now. Your passes are only confirmed once payment is
-              done on our call.
+              Nothing to pay now. Pay and collect your passes at{" "}
+              {PICKUP.place} with your reservation ID.
             </div>
 
             {submitError && (

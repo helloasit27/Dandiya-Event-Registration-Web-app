@@ -25,6 +25,7 @@ export const NIGHTS = [
     shortDate: "Sat 17 Oct",
     summaryLabel: "Saptami, 17 Oct",
     longDate: "17 October",
+    soldOut: true,
   },
   {
     id: "day2" as const,
@@ -33,10 +34,20 @@ export const NIGHTS = [
     shortDate: "Sun 18 Oct",
     summaryLabel: "Asthami, 18 Oct",
     longDate: "18 October",
+    soldOut: false,
   },
 ];
 
 export type NightId = (typeof NIGHTS)[number]["id"];
+
+/**
+ * How a reservation turns into a pass: the customer reserves here, then pays
+ * and collects the physical pass in person at the mall.
+ */
+export const PICKUP = {
+  place: "Plutone Mall, Rourkela",
+  short: "Reserve now · pay & collect your pass at Plutone Mall",
+};
 
 export const EVENT = {
   name: "Dhinchak Dandiya 2026",
@@ -100,15 +111,15 @@ export const whatsappShareUrl = (booking: {
   );
 
   const message = [
-    `Hi, I have reserved tickets for ${EVENT.name}. Waiting for confirmation from your side.`,
+    `Hi, I have reserved tickets for ${EVENT.name}. I will collect them from Plutone Mall.`,
     `*Booking ID:* ${booking.bookingId}`,
     `*Name:* ${booking.firstName} ${booking.lastName}`,
     `*Mobile:* ${booking.phone}`,
     ...ticketLines,
     `*Total Tickets:* ${booking.totalQty}`,
     `*Total Due:* ₹${formatAmount(booking.amountDue)}`,
-    `*Status:* Reservation Submitted — Awaiting Confirmation`,
-    `Please confirm my reservation. Thank you!`,
+    `*Status:* Reserved — to pay & collect at Plutone Mall`,
+    `Thank you!`,
   ].join("\n");
 
   return `https://wa.me/91${ORG.phonePrimary}?text=${encodeURIComponent(
@@ -152,11 +163,11 @@ export const TAGS = [
 export const FAQS = [
   {
     q: "How do I pay?",
-    a: "Reserve now and our team calls you to collect the payment and send your tickets. Online payment is coming soon.",
+    a: "Reserve here first, then visit Plutone Mall, Rourkela to pay and collect your pass. Show your reservation ID at the counter. Online payment is coming soon.",
   },
   {
     q: "How do I get my pass?",
-    a: "Once payment is done we send it by email and WhatsApp. Show it at the entry desk — no printout needed.",
+    a: "Collect it in person at Plutone Mall once you pay — just bring your reservation ID. Show the pass at the entry desk on the night.",
   },
   {
     q: "Is it safe for families?",

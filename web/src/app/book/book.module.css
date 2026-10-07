@@ -92,6 +92,25 @@
   border-color: rgba(255, 201, 60, 0.6);
 }
 
+/* A sold-out night stays visible so nobody wonders where it went. */
+.nightCardSoldOut {
+  opacity: 0.55;
+  border-style: dashed;
+}
+
+.soldOutChip {
+  flex: none;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(216, 27, 122, 0.55);
+  background: rgba(216, 27, 122, 0.18);
+  color: var(--coral);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .nightRow {
   display: flex;
   flex-wrap: wrap;

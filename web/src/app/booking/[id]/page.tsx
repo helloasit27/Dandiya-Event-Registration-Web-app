@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Clock } from "@/components/Icons";
-import { EVENT, NIGHTS, ORG, TICKET_PRICE, whatsappShareUrl } from "@/lib/event";
+import {
+  EVENT,
+  NIGHTS,
+  ORG,
+  PICKUP,
+  TICKET_PRICE,
+  whatsappShareUrl,
+} from "@/lib/event";
 import { getBooking } from "@/lib/store";
 import styles from "./confirm.module.css";
 
@@ -64,16 +71,15 @@ export default async function ConfirmationPage({ params, searchParams }: Props) 
           </div>
           <h1 className={styles.title}>Pass reserved</h1>
           <div className={styles.lede}>
-            Your passes are reserved under this ID —{" "}
-            <strong>not confirmed yet</strong>. They are confirmed only after
-            payment, which our team will collect on a call shortly.
+            Your passes are reserved under this ID. Visit{" "}
+            <strong>{PICKUP.place}</strong> to pay and collect them.
           </div>
         </div>
       </div>
 
       <div className={styles.idBand}>
         <div className={styles.idBandInner}>
-          <div className={styles.idLabel}>Reservation ID · payment pending</div>
+          <div className={styles.idLabel}>Reservation ID · show at Plutone Mall</div>
           <div className={styles.idValue}>{booking.bookingId}</div>
         </div>
       </div>
@@ -115,13 +121,13 @@ export default async function ConfirmationPage({ params, searchParams }: Props) 
           <div className={styles.rule} />
 
           <div className={styles.dueRow}>
-            <span className={styles.dueLabel}>Amount due on call</span>
+            <span className={styles.dueLabel}>Pay at collection</span>
             <span className={styles.dueValue}>₹{booking.amountDue}</span>
           </div>
 
           <div className={styles.pendingChip}>
             <Clock size={13} />
-            Reserved · payment pending
+            Reserved · collect at Plutone Mall
           </div>
         </div>
 
@@ -130,27 +136,21 @@ export default async function ConfirmationPage({ params, searchParams }: Props) 
             Take a screenshot of this page
           </div>
           <div className={styles.screenshotBody}>
-            Keep it for your reference and share it with us on WhatsApp if
-            needed. Your reservation ID{" "}
-            <strong>{booking.bookingId}</strong> is all we ask for when our team
-            calls.
+            Show it at Plutone Mall when you collect your passes. Your
+            reservation ID <strong>{booking.bookingId}</strong> is all we ask
+            for.
           </div>
         </div>
 
         <div className={styles.stepsCard}>
-          <div className={styles.stepsTitle}>How your pass gets confirmed</div>
+          <div className={styles.stepsTitle}>How to collect your pass</div>
           <ol className={styles.steps}>
+            <li>Visit {PICKUP.place} before the event.</li>
             <li>
-              Our team calls you on {booking.phone} to check your reservation.
+              Show your reservation ID {booking.bookingId} and pay ₹
+              {booking.amountDue}.
             </li>
-            <li>
-              You pay ₹{booking.amountDue} by UPI on that call — this is what
-              confirms your passes.
-            </li>
-            <li>
-              We send your confirmed tickets on WhatsApp
-              {booking.email ? ` and to ${booking.email}` : ""}.
-            </li>
+            <li>Collect your passes and bring them on the night.</li>
           </ol>
           <div className={styles.stepsCaveat}>
             Until payment is done, your passes stay reserved and can be released

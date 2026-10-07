@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { MAX_PER_NIGHT, TICKET_PRICE } from "./event";
+import { MAX_PER_NIGHT, NIGHTS, TICKET_PRICE } from "./event";
 
 /**
  * One schema, used by the form on the client and re-run on the server.
@@ -29,6 +29,18 @@ export const bookingInput = z
   .refine((v) => v.day1 + v.day2 >= 1, {
     message: "Add at least one pass",
     path: ["day1"],
+  })
+  // The form locks sold-out nights, but anything can POST to the API.
+  .superRefine((v, ctx) => {
+    for (const night of NIGHTS) {
+      if (night.soldOut && v[night.id] > 0) {
+        ctx.addIssue({
+          code: "custom",
+          message: `${night.longDate} is sold out`,
+          path: [night.id],
+        });
+      }
+    }
   });
 
 export type BookingInput = z.infer<typeof bookingInput>;
