@@ -313,25 +313,6 @@
   padding: 22px;
 }
 
-.passCardSoldOut {
-  opacity: 0.6;
-  border-style: dashed;
-}
-
-.soldOutChip {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(216, 27, 122, 0.55);
-  background: rgba(216, 27, 122, 0.18);
-  color: var(--coral);
-  font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
 .passLabel {
   font-size: 11.5px;
   letter-spacing: 0.2em;
@@ -586,4 +567,32 @@
   padding: 15px 22px;
   font-size: 15.5px;
   box-shadow: none;
+}
+
+/* Sold out ---------------------------------------------------------------- */
+/* Muted rather than struck through: the night still has to be readable, it
+   just must not look purchasable. */
+.passCardSoldOut {
+  opacity: 0.72;
+  border-style: dashed;
+}
+
+.soldOutBadge {
+  display: inline-block;
+  font-family: var(--font-outfit), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral);
+  border: 1px solid var(--coral);
+  border-radius: 999px;
+  padding: 7px 15px;
+  margin-bottom: 12px;
+}
+
+.soldOutNote {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-60);
 }

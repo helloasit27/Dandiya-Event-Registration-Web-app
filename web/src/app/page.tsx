@@ -106,8 +106,7 @@ export default function HomePage() {
               <ArrowRight size={20} />
             </Link>
             <div className={styles.heroCtaNote}>
-              17 Oct sold out · Reserve for 18 Oct — pay &amp; collect at
-              Plutone Mall
+              Reserve free — pay &amp; collect your pass at Plutone Mall
             </div>
           </div>
         </div>
@@ -137,7 +136,7 @@ export default function HomePage() {
       <section className={styles.passes}>
         <div className={styles.passesInner}>
           <div className="eyebrow">Passes</div>
-          <h2 className="h2">17 Oct sold out — 18 Oct open</h2>
+          <h2 className="h2">One price, Asthami still open</h2>
 
           <div className={styles.passGrid}>
             {NIGHTS.map((n) => (
@@ -150,7 +149,13 @@ export default function HomePage() {
                 <div className={styles.passLabel}>{n.label}</div>
                 <div className={styles.passName}>{n.name}</div>
                 {n.soldOut ? (
-                  <div className={styles.soldOutChip}>Sold out</div>
+                  <>
+                    <div className={styles.soldOutBadge}>Sold out</div>
+                    <div className={styles.soldOutNote}>
+                      All passes for this night are gone. {NIGHTS[1].name},{" "}
+                      {NIGHTS[1].shortDate}, is still open.
+                    </div>
+                  </>
                 ) : (
                   <>
                     <div className={styles.passPriceRow}>
@@ -170,8 +175,8 @@ export default function HomePage() {
 
           <div className={styles.passNotes}>
             {[
-              "17 October is sold out — thank you, Rourkela!",
-              "Reserve 18 October here, then pay & collect your pass at Plutone Mall.",
+              `${NIGHTS[0].name} (${NIGHTS[0].shortDate}) is sold out — no passes left for that night.`,
+              `${NIGHTS[1].name} (${NIGHTS[1].shortDate}) is open at ₹${TICKET_PRICE} per person.`,
               "Food is included with every valid ticket.",
             ].map((note) => (
               <div className={styles.passNote} key={note}>
