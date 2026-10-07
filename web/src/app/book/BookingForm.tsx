@@ -27,7 +27,16 @@ type Errors = Partial<
 export default function BookingForm() {
   const router = useRouter();
 
-  const [qty, setQty] = useState({ day1: 2, day2: 0 });
+  // Two passes pre-filled on the first night still on sale, so the common case
+  // needs no tapping. Derived rather than hardcoded: hardcoding day1 left two
+  // passes sitting on a sold-out night, which the server then refused on submit.
+  const [qty, setQty] = useState(() => {
+    const open = NIGHTS.find((n) => !n.soldOut);
+    return { day1: 0, day2: 0, ...(open ? { [open.id]: 2 } : {}) } as {
+      day1: number;
+      day2: number;
+    };
+  });
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
@@ -155,6 +164,24 @@ export default function BookingForm() {
         <div className={styles.nights}>
           {NIGHTS.map((night) => {
             const count = qty[night.id];
+            // A sold-out night keeps its card so the reason is visible, but
+            // loses the stepper entirely — nothing to tap, nothing to explain.
+            if (night.soldOut) {
+              return (
+                <div
+                  key={night.id}
+                  className={`${styles.nightCard} ${styles.nightCardSoldOut}`}
+                >
+                  <div className={styles.nightRow}>
+                    <div className={styles.nightMeta}>
+                      <div className={styles.nightName}>{night.name}</div>
+                      <div className={styles.nightDate}>{night.shortDate}</div>
+                    </div>
+                    <div className={styles.soldOutTag}>Sold out</div>
+                  </div>
+                </div>
+              );
+            }
             return (
               <div
                 key={night.id}
@@ -202,7 +229,7 @@ export default function BookingForm() {
           })}
         </div>
         <div className={styles.hint}>
-          Coming both nights? Add passes to both — it stays one booking.
+          Only Asthami, Sun 18 Oct, has passes left. Saptami is sold out.
         </div>
         {errors.qty && (
           <div className={styles.qtyError} data-invalid="true" role="alert">

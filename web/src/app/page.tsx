@@ -136,30 +136,47 @@ export default function HomePage() {
       <section className={styles.passes}>
         <div className={styles.passesInner}>
           <div className="eyebrow">Passes</div>
-          <h2 className="h2">One price, both nights open</h2>
+          <h2 className="h2">One price, Asthami still open</h2>
 
           <div className={styles.passGrid}>
             {NIGHTS.map((n) => (
-              <div className={styles.passCard} key={n.id}>
+              <div
+                className={`${styles.passCard} ${
+                  n.soldOut ? styles.passCardSoldOut : ""
+                }`}
+                key={n.id}
+              >
                 <div className={styles.passLabel}>{n.label}</div>
                 <div className={styles.passName}>{n.name}</div>
-                <div className={styles.passPriceRow}>
-                  <span className={styles.passPrice}>₹{TICKET_PRICE}</span>
-                  <span className={styles.passPer}>per person</span>
-                </div>
-                <div className={styles.foodChip}>
-                  <Check size={12} />
-                  Food included
-                </div>
-                <div className={styles.tnc}>T&amp;C apply</div>
+                {n.soldOut ? (
+                  <>
+                    <div className={styles.soldOutBadge}>Sold out</div>
+                    <div className={styles.soldOutNote}>
+                      All passes for this night are gone. {NIGHTS[1].name},{" "}
+                      {NIGHTS[1].shortDate}, is still open.
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className={styles.passPriceRow}>
+                      <span className={styles.passPrice}>₹{TICKET_PRICE}</span>
+                      <span className={styles.passPer}>per person</span>
+                    </div>
+                    <div className={styles.foodChip}>
+                      <Check size={12} />
+                      Food included
+                    </div>
+                    <div className={styles.tnc}>T&amp;C apply</div>
+                  </>
+                )}
               </div>
             ))}
           </div>
 
           <div className={styles.passNotes}>
             {[
-              "Choose one night or both — quantities set separately.",
-              `Both days together: ₹${TICKET_PRICE * 2} per person.`,
+              `${NIGHTS[0].name} (${NIGHTS[0].shortDate}) is sold out — no passes left for that night.`,
+              `${NIGHTS[1].name} (${NIGHTS[1].shortDate}) is open at ₹${TICKET_PRICE} per person.`,
               "Food is included with every valid ticket.",
             ].map((note) => (
               <div className={styles.passNote} key={note}>

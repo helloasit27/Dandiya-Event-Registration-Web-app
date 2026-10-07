@@ -25,6 +25,13 @@ export const NIGHTS = [
     shortDate: "Sat 17 Oct",
     summaryLabel: "Saptami, 17 Oct",
     longDate: "17 October",
+    /**
+     * Sold out 7 Oct. One flag drives the pass card, the booking stepper and
+     * the server's validation, so the three can never disagree — the UI alone
+     * would not stop a direct POST, and honouring a booking for a full night
+     * is a worse problem than refusing one.
+     */
+    soldOut: true,
   },
   {
     id: "day2" as const,
@@ -33,10 +40,18 @@ export const NIGHTS = [
     shortDate: "Sun 18 Oct",
     summaryLabel: "Asthami, 18 Oct",
     longDate: "18 October",
+    soldOut: false,
   },
 ];
 
 export type NightId = (typeof NIGHTS)[number]["id"];
+
+/** True when that night can still be booked. */
+export const nightIsOpen = (id: NightId): boolean =>
+  !NIGHTS.find((n) => n.id === id)?.soldOut;
+
+/** True when nothing is left at all — the whole event, not just one night. */
+export const allNightsSoldOut = (): boolean => NIGHTS.every((n) => n.soldOut);
 
 export const EVENT = {
   name: "Dhinchak Dandiya 2026",

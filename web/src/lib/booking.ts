@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { MAX_PER_NIGHT, TICKET_PRICE } from "./event";
+import { MAX_PER_NIGHT, nightIsOpen, TICKET_PRICE } from "./event";
 
 /**
  * One schema, used by the form on the client and re-run on the server.
@@ -29,6 +29,17 @@ export const bookingInput = z
   .refine((v) => v.day1 + v.day2 >= 1, {
     message: "Add at least one pass",
     path: ["day1"],
+  })
+  // Enforced here, not only in the form. The form hides a sold-out night, but
+  // anything can POST to this endpoint, and a booking taken for a night with no
+  // capacity has to be refused later by a person on the phone.
+  .refine((v) => v.day1 === 0 || nightIsOpen("day1"), {
+    message: "17 October is sold out",
+    path: ["day1"],
+  })
+  .refine((v) => v.day2 === 0 || nightIsOpen("day2"), {
+    message: "18 October is sold out",
+    path: ["day2"],
   });
 
 export type BookingInput = z.infer<typeof bookingInput>;
