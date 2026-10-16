@@ -13,6 +13,7 @@ import {
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import {
+  allNightsSoldOut,
   CTA_LABEL,
   EVENT,
   FAQS,
@@ -27,6 +28,10 @@ import {
 import styles from "./home.module.css";
 
 export default function HomePage() {
+  // Both nights gone: every CTA on the page would otherwise lead to a booking
+  // form that cannot accept anything.
+  const soldOut = allNightsSoldOut();
+
   return (
     <>
       <SiteHeader />
@@ -96,18 +101,30 @@ export default function HomePage() {
               </div>
             </div>
 
-            <Link href="/book" className={`cta ${styles.heroCta}`}>
-              <span>
-                {CTA_LABEL}
-                <span className="cta__sub">
-                  ₹{TICKET_PRICE} · Food included · T&amp;C apply
-                </span>
-              </span>
-              <ArrowRight size={20} />
-            </Link>
-            <div className={styles.heroCtaNote}>
-              Reserve free — pay &amp; collect your pass at Plutone Mall
-            </div>
+            {soldOut ? (
+              <>
+                <div className={styles.soldOutBanner}>Sold out</div>
+                <div className={styles.heroCtaNote}>
+                  Both nights are fully booked. If you already have a pass,
+                  bring it — entry is from 5:30 PM.
+                </div>
+              </>
+            ) : (
+              <>
+                <Link href="/book" className={`cta ${styles.heroCta}`}>
+                  <span>
+                    {CTA_LABEL}
+                    <span className="cta__sub">
+                      ₹{TICKET_PRICE} · Food included · T&amp;C apply
+                    </span>
+                  </span>
+                  <ArrowRight size={20} />
+                </Link>
+                <div className={styles.heroCtaNote}>
+                  Reserve free — pay &amp; collect your pass at Plutone Mall
+                </div>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -136,7 +153,7 @@ export default function HomePage() {
       <section className={styles.passes}>
         <div className={styles.passesInner}>
           <div className="eyebrow">Passes</div>
-          <h2 className="h2">One price, Asthami still open</h2>
+          <h2 className="h2">{soldOut ? "Both nights are sold out" : "One price, Asthami still open"}</h2>
 
           <div className={styles.passGrid}>
             {NIGHTS.map((n) => (
@@ -152,8 +169,9 @@ export default function HomePage() {
                   <>
                     <div className={styles.soldOutBadge}>Sold out</div>
                     <div className={styles.soldOutNote}>
-                      All passes for this night are gone. {NIGHTS[1].name},{" "}
-                      {NIGHTS[1].shortDate}, is still open.
+                      {soldOut
+                        ? "All passes for this night are gone."
+                        : `All passes for this night are gone. ${NIGHTS[1].name}, ${NIGHTS[1].shortDate}, is still open.`}
                     </div>
                   </>
                 ) : (
@@ -174,11 +192,18 @@ export default function HomePage() {
           </div>
 
           <div className={styles.passNotes}>
-            {[
-              `${NIGHTS[0].name} (${NIGHTS[0].shortDate}) is sold out — no passes left for that night.`,
-              `${NIGHTS[1].name} (${NIGHTS[1].shortDate}) is open at ₹${TICKET_PRICE} per person.`,
-              "Food is included with every valid ticket.",
-            ].map((note) => (
+            {(soldOut
+              ? [
+                  "Both nights are fully booked — no passes are left for either night.",
+                  "Already reserved? Pay and collect at Plutone Mall as normal, with your reservation ID.",
+                  "Already holding your pass? Nothing changes — bring it on the night.",
+                ]
+              : [
+                  `${NIGHTS[0].name} (${NIGHTS[0].shortDate}) is sold out — no passes left for that night.`,
+                  `${NIGHTS[1].name} (${NIGHTS[1].shortDate}) is open at ₹${TICKET_PRICE} per person.`,
+                  "Food is included with every valid ticket.",
+                ]
+            ).map((note) => (
               <div className={styles.passNote} key={note}>
                 <Check
                   size={16}
@@ -191,12 +216,16 @@ export default function HomePage() {
             ))}
           </div>
 
-          <Link href="/book" className={`cta ${styles.passesCta}`}>
-            {/* No "food included" here — both pass cards and the notes above
-                already say it, and appending it wrapped the button at 360px. */}
-            <span>{CTA_LABEL}</span>
-            <ArrowRight size={20} />
-          </Link>
+          {soldOut ? (
+            <div className={styles.soldOutBanner}>Sold out</div>
+          ) : (
+            <Link href="/book" className={`cta ${styles.passesCta}`}>
+              {/* No "food included" here — both pass cards and the notes above
+                  already say it, and appending it wrapped the button at 360px. */}
+              <span>{CTA_LABEL}</span>
+              <ArrowRight size={20} />
+            </Link>
+          )}
         </div>
       </section>
 

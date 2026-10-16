@@ -596,3 +596,16 @@
   line-height: 1.6;
   color: var(--ink-60);
 }
+
+/* Shown in place of a CTA once nothing is on sale. */
+.soldOutBanner {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  border: 2px solid var(--coral);
+  border-radius: 999px;
+  padding: 14px 30px;
+}

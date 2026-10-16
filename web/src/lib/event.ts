@@ -40,7 +40,8 @@ export const NIGHTS = [
     shortDate: "Sun 18 Oct",
     summaryLabel: "Asthami, 18 Oct",
     longDate: "18 October",
-    soldOut: false,
+    /** Sold out 16 Oct. Both nights are now full. */
+    soldOut: true,
   },
 ];
 

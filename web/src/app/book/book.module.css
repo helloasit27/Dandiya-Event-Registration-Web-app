@@ -421,3 +421,68 @@
   padding: 7px 14px;
   white-space: nowrap;
 }
+
+/* Sold-out screen --------------------------------------------------------- */
+.soldOutPanel {
+  background: var(--card);
+  border: 1px solid rgba(255, 201, 60, 0.25);
+  border-radius: 22px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.soldOutHead {
+  font-family: var(--font-yatra), cursive;
+  font-size: 25px;
+  line-height: 1.2;
+  color: var(--coral);
+}
+
+.soldOutBody {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink-70);
+}
+
+.soldOutBody strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.soldOutActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.soldOutCall {
+  flex: 1 1 auto;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--grad-cta);
+  color: var(--plum);
+  font-weight: 800;
+  font-size: 15.5px;
+  text-decoration: none;
+}
+
+.soldOutBack {
+  flex: 1 1 auto;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 201, 60, 0.4);
+  color: var(--gold);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}

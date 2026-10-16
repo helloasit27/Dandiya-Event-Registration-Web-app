@@ -15,6 +15,7 @@ import {
 import {
   CTA_LABEL,
   MAX_PER_NIGHT,
+  allNightsSoldOut,
   NIGHTS,
   PICKUP,
   TICKET_PRICE,
@@ -230,8 +231,7 @@ export default function BookingForm() {
           })}
         </div>
         <div className={styles.hint}>
-          Only Asthami, Sun 18 Oct, has passes left. Reserve now, then pay
-          and collect your pass at {PICKUP.place}.
+          Both nights are sold out. No passes are left for either night.
         </div>
         {errors.qty && (
           <div className={styles.qtyError} data-invalid="true" role="alert">

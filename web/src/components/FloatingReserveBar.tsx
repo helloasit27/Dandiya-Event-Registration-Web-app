@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowRight } from "./Icons";
-import { CTA_LABEL, TICKET_PRICE } from "@/lib/event";
+import { allNightsSoldOut, CTA_LABEL, TICKET_PRICE } from "@/lib/event";
 import styles from "../app/home.module.css";
 
 /**
@@ -25,10 +25,14 @@ import styles from "../app/home.module.css";
  * rather than disappearing entirely.
  */
 export default function FloatingReserveBar() {
+  // Nothing left to sell: the bar has no job, and a persistent booking button
+  // over a sold-out page is worse than no bar at all.
+  const soldOut = allNightsSoldOut();
   const [shown, setShown] = useState(true);
   const readyRef = useRef(false);
 
   useEffect(() => {
+    if (soldOut) return;
     const sentinel = document.getElementById("night-sentinel");
     if (!sentinel) return;
 
@@ -44,7 +48,9 @@ export default function FloatingReserveBar() {
     );
     io.observe(sentinel);
     return () => io.disconnect();
-  }, []);
+  }, [soldOut]);
+
+  if (soldOut) return null;
 
   return (
     <div
